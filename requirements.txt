@@ -1,0 +1,6 @@
+droidbot==1.0.0a2
+setuptools==69.0.2
+logging   
+typing
+subprocess
+numpy
