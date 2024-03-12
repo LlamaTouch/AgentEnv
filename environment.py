@@ -14,7 +14,7 @@ from parse_action import parse_action_string, parse_action
 
 
 class AgentEnv:
-    def __init__(self, device_serial=None, local_output_path=None, max_steps=30,instruction_fp="/data/jxq/all_instruction.csv") -> None:
+    def __init__(self, device_serial=None, local_output_path=None, max_steps=30,instruction_fp="docs/instructions/general/all_instruction.csv") -> None:
         
         self.logger = logging.getLogger(self.__class__.__name__)
         self.local_output_path = local_output_path

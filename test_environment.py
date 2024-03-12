@@ -3,14 +3,14 @@ from random_agent import RandomAgent
 import logging
 import time
 
-# AgentEnv初始化参数
+# AgentEnv init params
 device_serial = "10.29.212.189:5555"
 local_output_path = "/data/jxq/mobile-agent/AgentEnv/captured_data"
+instruction_file_path = "docs/instructions/general/all_instruction.csv"
 max_steps = 30 # agent max steps for each instruction
 
-# agent_env实例
-agent_env =  AgentEnv(device_serial=device_serial, local_output_path=local_output_path, max_steps=max_steps)
-# agent实例
+# agent_env instance
+agent_env =  AgentEnv(device_serial=device_serial, local_output_path=local_output_path, max_steps=max_steps,instruction_fp=instruction_file_path)
 agent = RandomAgent()
 
 logging.basicConfig(level=logging.DEBUG,
