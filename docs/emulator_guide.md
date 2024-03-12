@@ -3,7 +3,7 @@
 In this document we provide a guide for creating a virtual Android device with Android studio or with the command line.After creating an AVD, you will be able to connect it to an AndroidEnv instance.
 
 ## use Android studio
-In this way, you can refer to this docs (https://github.com/google-deepmind/android_env/blob/main/docs/emulator_guide.md)in details.
+In this way, you can refer to this docs (https://github.com/google-deepmind/android_env/blob/main/docs/emulator_guide.md) in details.
 
 ## only use command line tools
 
