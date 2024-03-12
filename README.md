@@ -33,7 +33,7 @@ Before you can use this tool, ensure you have the following installed:
    pip install -r requirements.txt
    ```
 
-### create an avd
+### Create an AVD
 Before running the environment, you will need access to an emulated Android device. For instructions on creating a virtual Android device, see the [Emulator guide](docs/emulator_guide.md).
 
 ### Usage
@@ -73,7 +73,7 @@ Before running the environment, you will need access to an emulated Android devi
     max_steps = 30 
     ```
 
-To initialize the `AgentEnv`, you would typically use these parameters to create a new instance, ensuring that the environment is set up with the specific device, data storage location, instruction set, and operation constraints defined by these parameters.For example:
+   To initialize the `AgentEnv`, you would typically use these parameters to create a new instance, ensuring that the environment is set up with the specific device, data storage location, instruction set, and operation constraints defined by these parameters.For example:
    ```python 
    agent_env =  AgentEnv(device_serial=device_serial, local_output_path=local_output_path, max_steps=max_steps,instruction_fp=instruction_file_path)
    ```
