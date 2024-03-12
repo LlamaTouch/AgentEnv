@@ -43,9 +43,7 @@ Before running the environment, you will need access to an emulated Android devi
 
 2. **Preinstalled Apps**.if you use our [tasks set](docs/instructions), you should preinstall [these apps](docs/app_package/app_package.csv) in your android device.These apps need to be involved in the process of executing our tasks set by the agent.
 
-3. **Initialize AgentEnv instance**.
-
-To initialize an instance of `AgentEnv`, you need to configure several parameters that define the environment's behavior and its interaction with devices. Below is a detailed explanation of the parameters involved in the initialization process:
+3. **Initialize AgentEnv instance**.To initialize an instance of `AgentEnv`, you need to configure several parameters that define the environment's behavior and its interaction with devices. Below is a detailed explanation of the parameters involved in the initialization process:
 
 - `device_serial`: This parameter specifies the serial number of the device that the agent will connect to. It can be an IP address (for devices connected over a network) or a USB-connected device's serial number. For example, the device connected over a network with the IP address `10.29.212.189` on port `5555`.
 
@@ -80,8 +78,6 @@ To initialize the `AgentEnv`, you would typically use these parameters to create
    agent_env =  AgentEnv(device_serial=device_serial, local_output_path=local_output_path, max_steps=max_steps,instruction_fp=instruction_file_path)
    ```
 
-4. **Integrate your Agent into AgentEnv**.
-
-The test_environment.py file is a demo example to show how to use AgentEnv in your own Agent models.
+4. **Integrate your Agent into AgentEnv**.The test_environment.py file is a demo example to show how to use AgentEnv in your own Agent models.
 
 
