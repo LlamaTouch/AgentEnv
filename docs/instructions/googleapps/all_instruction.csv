@@ -1,0 +1,61 @@
+trace_folder_path,episode_id,instruction
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_22,8709453762025764148,turn on bluetooth scan
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_39,10069870216119325954,move an email to a new category in the gmail app
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_58,11631772253949558470,Do I have any events today?
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_52,10965326115903821893,set the timer
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_17,2516012004368191039,Go to Yahoo.com
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_27,821873965856589741,set the stopwatch
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_25,388098194778312464,Open settings on Google Maps
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_29,1024517293080375339,Go to sound settings
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_41,10141029934822739021,Open Maps and search for coffee
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_46,10405500159604689136,turn off improve location accuracy
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_15,18276215501712931344,turn on improve location accuracy
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_9,13751719753816257618,Is it going to rain today?
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_38,10057547477448962219,turn on the 12-hour format for clock
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_12,1706058252082972419,Search for sushi restaurants on Maps
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_4,12072717654790012155,Go to network settings
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_3,11137766304201944618,Go to location settings
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_37,10054014647076707284,toggle show notifications on the lock screen
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_11,16990707691550773437,turn off wifi
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_2,10916189803433537913,remove spam from my inbox in the gmail app
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_40,10136307032389226297,add a contact in the contacts app
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_51,10932276003609708502,Open accessibility settings
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_14,17938678572019502635,change alarm snooze length
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_13,17264685466393245607,"Set the phone to ""Do not disturb""."
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_49,10774240587109527791,check out phone information
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_28,917635677146723873,turn on airplane mode
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_59,11996685528816198600,Show me popular videos on Youtube
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_18,2709332978052021498,set default search engine in the chrome app
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_20,7035853841512486594,What's on my calendar tomorrow?
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_8,13563225379366283319,Open the map
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_54,11180604823399452754,search for starred emails in the gmail app
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_53,11097044622343974629,Open Google Chrome and click the shortcut for Amazon.com
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_19,4510365456227100626,Show me the alarms in the clock app
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_55,11193627935006566144,check google app version
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_23,7597885808976673278,delete a single message in the gmail app
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_21,7993805876286876419,turn on translation in the chrome app
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_24,5724477616608710006,change the upload size in google photos
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_44,10231265714996052503,open sync settings in chrome
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_30,10690658741533756795,all mails in gmail
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_43,1022381322165169730,clear history in the chrome app
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_10,16130218024229308489,manage bookmarks in the chrome app
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_1,10059323239052632892,turn notification dots off
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_7,13118642174915973036,delete location history
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_42,1014188285004997961,toggle javascript in the chrome app
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_33,14866579479115948048,See recent photos
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_48,10658725401855043223,star an email in the gmail app
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_32,1332016557291859807,Open battery settings
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_5,12328916592710067202,refresh tabs in the chrome app
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_36,10036634329889164652,change keyboard looks
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_34,16754489084430570432,open the mobile data screen to see how much data has been used
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_16,2143123778391820313,check android version
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_6,12499699714226113785,turn off notifications settings in the gmail app
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_47,10529094880631540491,change the clock display to show seconds
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_57,11284182024619853586,Go to Wikipedia
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_45,10316979227561224357,Open Amazon
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_0,615146254683807741,Go to notification settings
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_56,11230143213828357962,turn off notifications in google photos
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_26,427792410888378033,Open my contact list
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_35,112339337270558693,Go to privacy settings
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_50,1078852035958996113,change the clock display to analog
+/data/jxq/mobile-agent/aitw_replay_data/googleapps/trace_31,10816182174687306590,Open calendar and show me the third week of next month
