@@ -39,11 +39,11 @@ Before running the environment, you will need access to an emulated Android devi
 ### Usage
 
 
-1. **TASK SET**.Use [instruction files](docs/instructions) as your tasks set, or you can build your own tasks set according to this [instruction file](docs/instructions/general/all_instruction.csv)
+1. **TASK SET**. Use [instruction files](docs/instructions) as your tasks set, or you can build your own tasks set according to this [instruction file](docs/instructions/general/all_instruction.csv)
 
-2. **Preinstalled Apps**.if you use our [tasks set](docs/instructions), you should preinstall [these apps](docs/app_package/app_package.csv) in your android device.These apps need to be involved in the process of executing our tasks set by the agent.
+2. **Preinstalled Apps**. if you use our [tasks set](docs/instructions), you should preinstall [these apps](docs/app_package/app_package.csv) in your android device.These apps need to be involved in the process of executing our tasks set by the agent.
 
-3. **Initialize AgentEnv instance**.To initialize an instance of `AgentEnv`, you need to configure several parameters that define the environment's behavior and its interaction with devices. Below is a detailed explanation of the parameters involved in the initialization process:
+3. **Initialize AgentEnv instance**. To initialize an instance of `AgentEnv`, you need to configure several parameters that define the environment's behavior and its interaction with devices. Below is a detailed explanation of the parameters involved in the initialization process:
 
 - `device_serial`: This parameter specifies the serial number of the device that the agent will connect to. It can be an IP address (for devices connected over a network) or a USB-connected device's serial number. For example, the device connected over a network with the IP address `10.29.212.189` on port `5555`.
 
@@ -61,7 +61,7 @@ Before running the environment, you will need access to an emulated Android devi
     local_output_path = "captured_data"
     ```
 
-- `instruction_file_path`: This parameter points to a CSV file containing a list of instructions that the agent will execute. Each instruction should be detailed enough for the agent to perform specific actions. The example uses a general instruction set located at `docs/instructions/general/all_instruction.csv`.
+- `instruction_file_path`: This parameter points to a CSV file containing a list of instructions that the agent will execute. For example, uses a general instruction set located at `docs/instructions/general/all_instruction.csv`.
 
     ```python
     instruction_file_path = "docs/instructions/general/all_instruction.csv"
