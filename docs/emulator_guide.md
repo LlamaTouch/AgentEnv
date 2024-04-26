@@ -49,13 +49,13 @@ path_to_your_android_sdk/cmdline-tools/latest/bin/avdmanager create avd -n pixel
 
 ### 6. Launch the AVD
    - For the Android GUI:
-    ```bash
-    emulator -avd pixel_6a_api_31
-    ```
+   ```bash
+   emulator -avd pixel_6a_api_31
+   ```
    - For headless mode (no Android GUI):
-    ```bash
-    emulator -avd pixel_6a_api_31 -no-window
-    ```
+   ```bash
+   emulator -avd pixel_6a_api_31 -no-window
+   ```
 
 ### 7. Test ADB connection
 After you launch your AVD, run this command:
