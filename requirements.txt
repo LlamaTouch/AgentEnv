@@ -4,3 +4,5 @@ logging
 typing
 subprocess
 numpy
+uiautomator2
+yaml

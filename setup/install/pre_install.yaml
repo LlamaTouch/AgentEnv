@@ -1,0 +1,206 @@
+total_apps: 41
+apps:
+  - app_name: Google_Tasks
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.google.android.apps.tasks"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: CNN
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.cnn.mobile.android.phone"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: YT_Music
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.google.android.apps.youtube.music"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: BBC_News
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=bbc.mobile.news.ww"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: Google_Podcast
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.google.android.apps.podcasts"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: WEBTOON
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.naver.linewebtoon"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: Google_Play_Books
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.google.android.apps.books"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: ZOOM
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=us.zoom.videomeetings"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: Trello
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.trello"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: Pinterest
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.pinterest"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: ESPN
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.espn.score_center"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: YouTube
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.google.android.youtube"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: Evernote
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.evernote"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: Crunchyroll
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.crunchyroll.crunchyroid"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: Quora
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.quora.android"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: Newsbreak
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.particlenews.newsbreak"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: Amazon_Prime_TV
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.amazon.avod.thirdpartyclient"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: Google_Drive
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.google.android.apps.docs"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: Discord
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.discord"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: BurgerKing
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.emn8.mobilem8.nativeapp.bk"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: Uber
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.ubercab"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: Amazon_Shopping
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.amazon.mShop.android.shopping"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: CBS Sports
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.handmark.sportcaster"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: DoorDash
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.dd.doordash"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: Facebook
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.facebook.katana"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: Walmart
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.walmart.android"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: Google_Keep
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.google.android.keep"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: Yelp
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.yelp.android"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: Expedia
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.expedia.bookings"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: Instagram
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.instagram.android"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: Easy_Voice_Recorder
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.coffeebeanventures.easyvoicerecorder"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: Money_Manager
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.realbyteapps.moneymanagerfree"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: Reddit
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.reddit.frontpage"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: Coursera
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=org.coursera.android"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: English_Crossword_Puzzle
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.appspot.orium_blog.crossword.eng"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: Spotify
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.spotify.music"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: Google_News
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.google.android.apps.magazines"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: Duolingo
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.duolingo"
+      click_xpath: '//*[@content-desc="Install"]'
+
+  - app_name: X
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.twitter.android"
+      click_xpath: '//*[@content-desc="Install"]'
+  
+  - app_name: Gmail
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.google.android.gm"
+      click_xpath: '//*[@content-desc="Install"]'
+  
+  - app_name: Google_Keep_Notes
+    action_seq:
+      open_url: "https://play.google.com/store/apps/details?id=com.google.android.keep"
+      click_xpath: '//*[@content-desc="Install"]'

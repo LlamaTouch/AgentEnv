@@ -1,22 +1,27 @@
 import logging
 import re
 import os
-from adb import ADB
-from droidbot_app import DroidBotAppConn
 import json
+from utils.adb import ADB
+from utils.droidbot_app import DroidBotAppConn
+
+
+class ScreenshotException(Exception):
+    pass
+
 
 class Device(object):
 
-    def __init__(self, device_serial):
+    def __init__(self, device_serial,adb_clt_path="adb"):
         """
         Initialize a device connection with the bare minimum requirements.
         """
         self.logger = logging.getLogger(self.__class__.__name__)
         self.serial = device_serial
-        self.adb = ADB(device=self)
+        self.adb = ADB(device=self,adb_clt_path=adb_clt_path)
         self.display_info = None
 
-        self.droidbot_app = DroidBotAppConn(device=self)
+        self.droidbot_app = DroidBotAppConn(device=self,adb_clt_path=adb_clt_path)
 
         self.sdk_version = None
         self.release_version = None
@@ -173,17 +178,29 @@ class Device(object):
     
     def take_screenshot(self,local_fp):
         """"
-        return image file path
+        return image data
         """
-        filename = local_fp.split('/')[-1]
-        remote_fp = f"/sdcard/{filename}"
         times = 0
-        while (not os.path.exists(local_fp)) and times < 5:
-              self.adb.shell(f"screencap -p {remote_fp}")
-              self.adb.run_cmd(f"pull {remote_fp} {local_fp}")
-              self.add.run_cmd(f"rm {remote_fp}")
-            #   self.adb.run_cmd(f"exec-out screencap -p > {local_fp}")
-              times = times + 1
+        success = False
+        remote_fp = f"/sdcard/{local_fp.split('/')[-1]}"
+        while not success and times < 20:
+            try:
+                # self.adb.run_cmd(f"exec-out screencap -p > {local_fp}")
+                self.adb.run_cmd(f"shell screencap -p {remote_fp}")
+                self.adb.run_cmd(f"pull {remote_fp} {local_fp}")
+                # check if the file exists, if so, set success to True to exit the loop
+                if os.path.exists(local_fp):
+                    success = True
+                    self.adb.run_cmd(f"shell rm {remote_fp}")
+            except Exception as e:
+                self.logger.info(f"try {times + 1} fail: {e}")
+
+            times += 1
+
+        if not success:
+            # if failed after 20 times, raise a custom exception
+            raise ScreenshotException(f"20 times failed to get screenshot and save to {local_fp}")
+
         return local_fp
     
     def dumpsy_device_state(self,file_path):
@@ -203,8 +220,6 @@ class Device(object):
         
         
     
-if __name__ == "__main__":
-    device_serial = ""
 
 
     
