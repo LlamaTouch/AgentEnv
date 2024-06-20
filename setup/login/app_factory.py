@@ -1,4 +1,4 @@
-from .Apps import *
+from Apps import *
 
 
 def app_factory(device, app_name):
@@ -16,20 +16,20 @@ def app_factory(device, app_name):
         return Google_Keep(device, app_name)
     elif app_name == "Google_News":
         return Google_News(device, app_name)
-    elif app_name == "Youtube":
+    elif app_name == "YouTube":
         return Youtube(device, app_name)
-    elif app_name == "WEBTOON":
-        return WEBTOON(device, app_name)
+    # elif app_name == "WEBTOON":
+    #     return WEBTOON(device, app_name)
     elif app_name == "Pinterest":
         return Pinterest(device, app_name)
-    elif app_name == "NewsBreak":
-        return NewsBreak(device, app_name)
-    elif app_name == "BurgerKing":
-        return BurgerKing(device, app_name)
-    elif app_name == "Yelp":
-        return Yelp(device, app_name)
-    elif app_name == "Expedia":
-        return Expedia(device, app_name)
+    # elif app_name == "NewsBreak":
+    #     return NewsBreak(device, app_name)
+    # elif app_name == "BurgerKing":
+    #     return BurgerKing(device, app_name)
+    # elif app_name == "Yelp":
+    #     return Yelp(device, app_name)
+    # elif app_name == "Expedia":
+    #     return Expedia(device, app_name)
     elif app_name == "Reddit":
         return Reddit(device, app_name)
     elif app_name == "Coursera":

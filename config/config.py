@@ -1,4 +1,3 @@
-
 class AgentEnvConfig:
     
     """
@@ -19,11 +18,6 @@ class AgentEnvConfig:
             for each instruction set in the task file. This limit helps to prevent infinite loops
             and manage test duration.
         
-        ADB_CLIENT_BIN_PATH (str): The path to the adb executable. ADB is used for interfacing
-            with the Android operating system running on the emulator. This path should be set
-            to where adb is installed on the host machine. If you want to use default adb, the parameter is
-            set "adb"
-        
         EMULATOR_CONTROLLER_AGRS (dict): A dictionary of arguments used to configure the emulator
             controller. These settings include:
             - "snapshot": The name of the emulator snapshot to use for testing, allowing for quick
@@ -33,14 +27,14 @@ class AgentEnvConfig:
               run without opening a GUI window. Useful for running tests in a headless environment.
     """
     LOCAL_OUTPUT_PATH = "captured_data"
-    INSTRUCTION_FILE_PATH = "docs/instructions/llamatouch_task_metadata.csv"
-    AVD_NAME = "pixel_6a31"
+    # INSTRUCTION_FILE_PATH = "docs/instructions/llamatouch_task_metadata.csv"
+    INSTRUCTION_FILE_PATH = "docs/instructions/setup_test.tsv"
+    AVD_NAME = "pixel_6a3"
     MAX_STEPS = 30
-    ADB_CLIENT_BIN_PATH = "adb"
     EMULATOR_CONTROLLER_AGRS = {
         "snapshot" : "default_boot",
         "port" : "5554",
-        "no-window" : "true",  # Change this to "false" to run the emulator without a GUI.
+        "no-window" : "false",  # Change this to "true" to run the emulator without GUI.
     }
 
 class LogConfig:

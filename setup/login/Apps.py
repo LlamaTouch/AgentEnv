@@ -1,4 +1,4 @@
-from .BaseApp import BaseApp
+from BaseApp import BaseApp
 import logging
 import time
 
@@ -192,17 +192,17 @@ class WEBTOON(BaseApp):
         self.start()
         self.d.xpath('//android.widget.TextView\
                      [@resource-id="com.naver.linewebtoon:id/text" and @text="Continue with Google"]').click()
-        time.sleep(5)
+        time.sleep(10)
         self.d.xpath('(//android.widget.LinearLayout\
                      [@resource-id="com.google.android.gms:id/container"])[1]/android.widget.LinearLayout').click()
-        time.sleep(5)
+        time.sleep(10)
   
         element = self.d.xpath('//*[@text="Submit"]')
         if element.exists:
             self.d.xpath('//android.widget.ImageView[@resource-id="com.naver.linewebtoon:id/agree_checkbox"]').click()
-            time.sleep(5)
+            time.sleep(10)
             element.click()
-            time.sleep(5)
+            time.sleep(10)
         
         self.close()
 # 1
@@ -358,7 +358,11 @@ class Yelp(BaseApp):
     def login(self):
         self.start()
         # allow location
-        element = self.d.xpath('//android.widget.Button[@text="Only this time"]')
+        ok_button = self.d.xpath('//android.widget.Button[@text="OK, I understand"]')
+        if ok_button.exists:
+            ok_button.click()
+            time.sleep(10)
+        element = self.d.xpath('//android.widget.Button[@text="While using the app"]')
         if element.exists:
             element.click()
             time.sleep(10)
@@ -405,6 +409,10 @@ class Expedia(BaseApp):
         time.sleep(10)
         self.d.xpath('//android.widget.TextView[@text="Continue"]').click()
         time.sleep(15)
+        skip_button = self.d.xpath('//android.widget.Button[@text="Skip for now"]')
+        if skip_button.exists:
+            skip_button.click()
+            time.sleep(10)  
         self.d.xpath('//android.widget.TextView[@text="Let\'s go"]').click()
         time.sleep(10)
         self.d.xpath('//android.view.ViewGroup[@resource-id="android:id/content"]/android.view.View\

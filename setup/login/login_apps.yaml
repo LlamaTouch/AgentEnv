@@ -8,16 +8,16 @@ apps:
   - Google_Keep
   - Google_News
   - YouTube
-  - WEBTOON
+  # - WEBTOON
   - Pinterest
-  - NewsBreak
-  - BurgerKing
-  - Yelp
-  - Expedia
+  # - Yelp
+  # - Expedia
   - Reddit
   - Coursera
   - Spotify
   - Gmail
   - CBS_Sports
+  # - NewsBreak
+  # - BurgerKing
 
 

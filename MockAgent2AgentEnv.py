@@ -1,7 +1,7 @@
 import logging
 import time
 from environment import AgentEnv
-from random_agent import RandomAgent
+from mockAgent import MockAgent
 from config.config import AgentEnvConfig, LogConfig 
 
 # Setup logging using configuration settings
@@ -22,20 +22,26 @@ agent_env = AgentEnv(
     instruction_fp=AgentEnvConfig.INSTRUCTION_FILE_PATH,
 )
 agent_env.set_up()
-agent = RandomAgent()
+agent = MockAgent()
 
 # Main loop
 while True:
+    '''
+    In this loop,you can get all interface that AgentEnv provice for agent to interact with.    
+    '''
     instruction = agent_env.get_instruction()
     if instruction is None:
         break
     logging.info(f"Current instruction: {instruction}")
+    agent_env.setup_task(instruction)
+    
     while not agent_env.episode_done():
         state = agent_env.get_state()
         action = agent.get_action(state)
         status = agent_env.post_action(action=action)
         state_history = agent_env.get_state_history()
         device_size = agent_env.get_device_size()
+    agent_env.get_state() # get the final state
     agent_env.reset_env()
 
 agent_env.tear_down()

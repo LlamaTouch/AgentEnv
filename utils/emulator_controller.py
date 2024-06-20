@@ -10,7 +10,6 @@ class EmulatorController:
         self.logger = logging.getLogger(self.__class__.__name__)
         self.state = "off"
 
-
     def load_emulator_with_snapshot(self,snapshot_name="default_boot"):
         """
         start the emulator and load the specified snapshot.
