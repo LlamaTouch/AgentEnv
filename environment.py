@@ -17,6 +17,7 @@ class AgentEnv:
         self.device_serial = f"emulator-{emulator_controller_args['port']}"
         self.logger = logging.getLogger(self.__class__.__name__)
         self.local_output_path = local_output_path
+        os.makedirs(self.local_output_path, exist_ok=True)
         # self.device = Device(device_serial=self.device_serial,adb_clt_path=self.adb_clt_path)
         self.device = Device(device_serial=self.device_serial)
         self.emulator_controller = EmulatorController(avd_name=avd_name,device_serial=self.device_serial,params=emulator_controller_args)

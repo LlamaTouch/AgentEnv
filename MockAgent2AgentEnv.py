@@ -4,6 +4,7 @@ from environment import AgentEnv
 from mockAgent import MockAgent
 from config.config import AgentEnvConfig, LogConfig 
 
+os.makedirs(LogConfig.LOG_FILE_PATH, exist_ok=True)
 # Setup logging using configuration settings
 log_file_name = f"{LogConfig.LOG_FILE_PATH}/{time.time()}_out.log"
 logging.basicConfig(level=getattr(logging, LogConfig.LOGGING_LEVEL),
@@ -16,7 +17,6 @@ logging.basicConfig(level=getattr(logging, LogConfig.LOGGING_LEVEL),
 agent_env = AgentEnv(
     avd_name=AgentEnvConfig.AVD_NAME,
     emulator_controller_args=AgentEnvConfig.EMULATOR_CONTROLLER_AGRS,
-    adb_clt_path=AgentEnvConfig.ADB_CLIENT_BIN_PATH,
     max_steps=AgentEnvConfig.MAX_STEPS,
     local_output_path=AgentEnvConfig.LOCAL_OUTPUT_PATH,
     instruction_fp=AgentEnvConfig.INSTRUCTION_FILE_PATH,
