@@ -3,10 +3,6 @@
 This repository is designed to provide an environment for an agent model to communicate with an Android device or emulator. AgentEnv serves as a bridge between the agent model and the Android device or emulator. It interprets the agent's output actions (in [AITW format](docs/AITW_ACTION_FORMAT.md)) and maps them to corresponding actions on the Android device or emulator. Additionally, AgentEnv returns the state of the Android device or emulator to the agent model, including screenshots, view hierarchy and so on.The process of communication between the agent model and the Android device or emulator is recorded by the AgentEnv.
 
 # Dependencies
-## Python
-- Python 3.9
-- `pip install -r requirements.txt`
-
 ## Emulator Installation
 Follow [Android Emulator Installation Guide](docs/emulator_guide.md) to prepare the Android Emulator.If you want to use AgentEnv for Llamatouch,you should create AVD with API-level=31 and device=pixel_6a.
 
@@ -34,6 +30,27 @@ Follow [Android Emulator Installation Guide](docs/emulator_guide.md) to prepare 
 5. quit the emulator and save to the default snapshot.
 
 # Run AgentEnv
+## Setup
+1. **Clone the Repository and Navigate to the Project Directory**:
+   ```bash
+   git clone https://github.com/LlamaTouch/AgentEnv
+   cd AgentEnv
+   ```
+
+2. **Create a Conda Environment**:
+   ```bash
+   conda create -n AgentEnv python=3.9
+   ```
+3. **Activate the Conda Environment**:
+   ```bash
+   conda activate AgentEnv
+   ```
+
+4. **Install Dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
 ## Configuration
 Before using AgentEnv, ensure you customize the [config.py file](config/config.py) with the settings specific to your previously configured Android Virtual Device (AVD).
 
