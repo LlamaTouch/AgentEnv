@@ -2,7 +2,8 @@ import logging
 import time
 from environment import AgentEnv
 from mockAgent import MockAgent
-from config.config import AgentEnvConfig, LogConfig 
+from config.config import AgentEnvConfig, LogConfig
+import os
 
 os.makedirs(LogConfig.LOG_FILE_PATH, exist_ok=True)
 # Setup logging using configuration settings
