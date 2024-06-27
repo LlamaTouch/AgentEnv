@@ -5,13 +5,16 @@ __pycache__/
 # 忽略日志文件夹
 log/
 
-# 忽略配置文件夹的缓存
+# 忽略配置文件夹的pyc 文件
 config/__pycache__/
 
 # 忽略设置文件夹的缓存
 setup/__pycache__/
 
-# 忽略工具文件夹的缓存
+# 忽略tasks文件夹的pyc 文件
+setup/tasks/__pycache__/
+
+# 忽略工具文件夹的pyc 文件
 utils/__pycache__/
 
 # 忽略捕获的数据文件夹
