@@ -13,12 +13,10 @@ class AgentEnv:
     def __init__(self, avd_name = None, emulator_controller_args=None,\
                  max_steps=30,local_output_path="captured_data",instruction_fp="docs/instructions/llamatouch_task_metadata.csv") -> None:
         
-        # self.adb_clt_path = adb_clt_path
         self.device_serial = f"emulator-{emulator_controller_args['port']}"
         self.logger = logging.getLogger(self.__class__.__name__)
         self.local_output_path = local_output_path
         os.makedirs(self.local_output_path, exist_ok=True)
-        # self.device = Device(device_serial=self.device_serial,adb_clt_path=self.adb_clt_path)
         self.device = Device(device_serial=self.device_serial)
         self.emulator_controller = EmulatorController(avd_name=avd_name,device_serial=self.device_serial,params=emulator_controller_args)
         
@@ -90,7 +88,6 @@ class AgentEnv:
     def set_up(self) -> None:
         self.logger.info("loading emulator...")
         self.emulator_controller.load_emulator_with_snapshot()
-        # time.sleep(100) # waiting for emulator to start
         time.sleep(30) # waiting for emulator to start
         self.logger.info("connecting to device...")
         self.device.connect()
@@ -227,7 +224,5 @@ class AgentEnv:
     def setup_task(self, instruction: str) -> None:
         self.logger.info(f"setting up the task: {instruction}")
         TaskSetUp(self.device.u2d, instruction)
-
-
 
 
