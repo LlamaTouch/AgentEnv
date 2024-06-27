@@ -4,6 +4,8 @@ class MockAgent:
     def __init__(self):
        self.index = 0
        self.logger = logging.getLogger(self.__class__.__name__) 
+       # The action string returned by the Agent must be in the AitW format; 
+       # for reference, see docs/AITW_ACTION_FORMAT.md
        self.actions = [
                 "action_type: DUAL_POINT, touch_point: [0.1, 0.9], lift_point: [0.1, 0.9], typed_text:",
                 "action_type: TYPE, touch_point: [-1.0, -1.0], lift_point: [-1.0, -1.0], typed_text: best rated coffee maker",
