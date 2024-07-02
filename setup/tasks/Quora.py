@@ -23,7 +23,7 @@ class QuoraTask01(BaseTaskSetup):
             
             if text_view.wait():
                 # Navigate to the first recommended space
-                view = text_view.child('//android.view.View[1]')
+                view = text_view.child('.//android.view.View[1]')
                 
                 # Check if the space exists
                 if view.exists():
@@ -73,7 +73,7 @@ class QuoraTask02(BaseTaskSetup):
             text_view = self.d.xpath('//android.widget.TextView[@text="Spaces you might like"]')
             if text_view.wait():
                 # Navigate to the first recommended space
-                view = text_view.child('//android.view.View[1]')
+                view = text_view.child('.//android.view.View[1]')
                 if view.exists():
                     view.click()
                     time.sleep(5)
@@ -132,7 +132,7 @@ class QuoraTask03(BaseTaskSetup):
             text_view = self.d.xpath('//android.widget.TextView[@text="Spaces you might like"]')
             if text_view.wait():
                 # Navigate to the first recommended space
-                view = text_view.child('//android.view.View[1]')
+                view = text_view.child('.//android.view.View[1]')
                 if view.exists():
                     view.click()
                     time.sleep(5)

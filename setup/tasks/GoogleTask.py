@@ -10,11 +10,11 @@ def check_task_exist(d: Device, task_name: str="Task2") -> bool:
     # Locate the parent HorizontalScrollView
     parent = d.xpath('//android.widget.HorizontalScrollView[@resource-id="com.google.android.apps.tasks:id/tabs"]')
     # Find all LinearLayout elements, excluding those with content-desc "New list"
-    elements: XPathSelector = parent.child(className="android.widget.LinearLayout")
+    elements: XPathSelector = parent.child(".//android.widget.LinearLayout")
    
     for element in elements:
         # Get the content-desc attribute of the element
-        ui_object = element.get()  # 转换为UiObject
+        ui_object = element.get()  
         content_desc = ui_object.info.get('contentDescription', "")  
         
         # Check if the element does not have a content-desc "New list"
@@ -72,11 +72,11 @@ def check_list_exist(d: Device, list_name: str="Test") -> bool:
     parent = d.xpath('//android.widget.HorizontalScrollView[@resource-id="com.google.android.apps.tasks:id/tabs"]')
 
     # Find all LinearLayout elements, excluding those with content-desc "New list"
-    elements = parent.child(className="android.widget.LinearLayout")
+    elements: XPathSelector = parent.child(".//android.widget.LinearLayout")
 
     for element in elements:
         # Check if the element has a content-desc "New list"
-        ui_object = element.get()  # 转换为UiObject
+        ui_object = element.get()  
         content_desc = ui_object.info.get('contentDescription', "")  
         if content_desc != list_name:
             return True
