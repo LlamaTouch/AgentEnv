@@ -4,6 +4,8 @@ from setup.tasks.GoogleTask import *
 from setup.tasks.GoogleDrive import *
 from setup.tasks.Quora import *
 from setup.tasks.Zoom import *
+from setup.tasks.Trello import *
+from setup.tasks.Coursera import *
 
 _TaskSetUpMap = {
     # settings
@@ -35,7 +37,14 @@ _TaskSetUpMap = {
     'On Zoom, edit my scheduled meeting \'Weekly group meeting\', turn \'Enable waiting room\' on.' : ZoomTask04,
     'On Zoom, turn to page \'Team chat\', bookmark my latest message to myself.' : ZoomTask05,
     'On Zoom, turn to page \'Team chat\', set a reminder for my latest message to myself in 1 hour.' : ZoomTask06,
-
+    # Trello
+    'Open the Trello app and add a new list titled "To Do" to the "School" board.' : TrelloTask01,
+    'Open the Trello app, add a new card titled "Task 1" to the "To Do" list in the "School" board.' : TrelloTask02,
+    'Open the Trello app and archive a list named "To Do" in the "School" board.' : TrelloTask03,
+    'Open the Trello app and set a due date for a card in the "School" board.': TrelloTask04,
+    # Coursera
+    'Download the first video lecture for the \'Algorithms, Part I\' course to watch offline on the Coursera app.' : CourseraTask01,
+    'Visit the forums for the \'Algorithms, Part I\' course and go to discussion for Week 1 on Coursera.' : CourseraTask02,
 
 }
 

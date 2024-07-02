@@ -1,7 +1,8 @@
 from setup.tasks.BaseTaskSetup import BaseTaskSetup
 import time
+from uiautomator2 import Device
 
-def check_meeting_exist(d, meeting_name=None) -> bool:
+def check_meeting_exist(d: Device, meeting_name: str=None) -> bool:
     """
     func: check the meeting is exist or not. 
     """
@@ -19,7 +20,7 @@ def check_meeting_exist(d, meeting_name=None) -> bool:
         # Search for target meeting
         elements = d.xpath('//android.widget.TextView[@resource-id="us.zoom.videomeetings:id/title"]').all()
         for element in elements:
-            text = element.get_text()
+            text = element.text
             if text == meeting_name:
                 return True
         return False
@@ -28,9 +29,11 @@ def check_meeting_exist(d, meeting_name=None) -> bool:
         print(f"An error occurred: {e}")
         return False
 
-def add_scheduled_meeting(d, meeting_name=None) -> None:
+def add_scheduled_meeting(d: Device, meeting_name: str = None) -> None:
     """
-    func: add a scheduled meeting named meeting_name.
+    Adds a scheduled meeting named 'meeting_name'.
+    Raises ValueError if no meeting name is provided.
+    Assumes starting from the main page of the app.
     """
     if meeting_name is None:
         raise ValueError("Meeting name must be provided")
@@ -41,35 +44,30 @@ def add_scheduled_meeting(d, meeting_name=None) -> None:
         if not meetings_button.exists(timeout=5):
             raise Exception("Meetings button not found on the screen")
         meetings_button.click()
-        time.sleep(2)  
 
         # Navigate to the Schedule section
         schedule_button = d(text="Schedule")
         if not schedule_button.exists(timeout=5):
             raise Exception("Schedule button not found on the screen")
         schedule_button.click()
-        time.sleep(2)
 
         # Input the topic of the meeting
         topic_input = d(resourceId="us.zoom.videomeetings:id/edtTopic")
         if not topic_input.exists(timeout=5):
             raise Exception("Topic input field not found")
         topic_input.set_text(meeting_name)
-        time.sleep(2)
 
         # Click the Schedule button
         schedule_button = d(resourceId="us.zoom.videomeetings:id/btnSchedule")
         if not schedule_button.exists(timeout=5):
             raise Exception("Schedule button not found")
         schedule_button.click()
-        time.sleep(5)
 
         # Confirm the schedule
         confirm_button = d(resourceId="us.zoom.videomeetings:id/button1")
-        if not confirm_button.exists(timeout=5):
+        if not confirm_button.exists(timeout=10):
             raise Exception("Confirm button not found")
         confirm_button.click()
-        time.sleep(5)
     
     except Exception as e:
         print(f"An error occurred: {e}")
@@ -177,25 +175,39 @@ class ZoomTask05(BaseTaskSetup):
         super().__init__(device, instruction)
     
     def setup(self):
-        # start app
-        self.d.app_start("us.zoom.videomeetings", use_monkey=True)
+        try:
+            # Start the Zoom app
+            self.d.app_start("us.zoom.videomeetings", use_monkey=True)
 
-        # Click on "Team Chat" to navigate to the team chat section
-        self.d(text="Team Chat").click()
+            # Navigate to "Team Chat"
+            team_chat = self.d(text="Team Chat")
+            if not team_chat.exists(timeout=5):
+                raise Exception("Team Chat button not found")
+            team_chat.click()
 
-        # select yourself
-        self.d(className="android.widget.LinearLayout", instance=11).click()
+            # Select yourself to chat with
+            self_selector = self.d(className="android.widget.LinearLayout", instance=11)
+            if not self_selector.exists(timeout=5):
+                raise Exception("Self selector not found")
+            self_selector.click()
 
-        # Find the text input field by its resource ID and input the text 'hellomessage'
-        self.d(resourceId="us.zoom.videomeetings:id/inflatedCommandEditText").set_text("hellomessage")
+            # Input the message
+            message_field = self.d(resourceId="us.zoom.videomeetings:id/inflatedCommandEditText")
+            if not message_field.exists(timeout=5):
+                raise Exception("Message input field not found")
+            message_field.set_text("hellomessage")
 
-        # Click on the "Send" button using its accessibility description
-        self.d(description="Send").click()
+            # Send the message
+            send_button = self.d(description="Send")
+            if not send_button.exists(timeout=5):
+                raise Exception("Send button not found")
+            send_button.click()
 
-        # stop app
-        self.d.press("home")
-        time.sleep(2)
-        self.d.app_stop("us.zoom.videomeetings")
+        finally:
+            # Stop the Zoom app
+            self.d.press("home")
+            time.sleep(2)
+            self.d.app_stop("us.zoom.videomeetings")
 
 class ZoomTask06(BaseTaskSetup):
     '''
@@ -206,23 +218,37 @@ class ZoomTask06(BaseTaskSetup):
         super().__init__(device, instruction)
     
     def setup(self):
-        # start app
-        self.d.app_start("us.zoom.videomeetings", use_monkey=True)
+        try:
+            # Start the Zoom app
+            self.d.app_start("us.zoom.videomeetings", use_monkey=True)
 
-        # Click on "Team Chat" to navigate to the team chat section
-        self.d(text="Team Chat").click()
+            # Navigate to "Team Chat"
+            team_chat = self.d(text="Team Chat")
+            if not team_chat.exists(timeout=5):
+                raise Exception("Team Chat button not found")
+            team_chat.click()
 
-        # select yourself
-        self.d(className="android.widget.LinearLayout", instance=11).click()
+            # Select yourself to chat with
+            self_selector = self.d(className="android.widget.LinearLayout", instance=11)
+            if not self_selector.exists(timeout=5):
+                raise Exception("Self selector not found")
+            self_selector.click()
 
-        # Find the text input field by its resource ID and input the text 'hellomessage'
-        self.d(resourceId="us.zoom.videomeetings:id/inflatedCommandEditText").set_text("hellomessage")
+            # Input the message
+            message_field = self.d(resourceId="us.zoom.videomeetings:id/inflatedCommandEditText")
+            if not message_field.exists(timeout=5):
+                raise Exception("Message input field not found")
+            message_field.set_text("hellomessage")
 
-        # Click on the "Send" button using its accessibility description
-        self.d(description="Send").click()
+            # Send the message
+            send_button = self.d(description="Send")
+            if not send_button.exists(timeout=5):
+                raise Exception("Send button not found")
+            send_button.click()
 
-        # stop app
-        self.d.press("home")
-        time.sleep(2)
-        self.d.app_stop("us.zoom.videomeetings")
+        finally:
+            # Stop the Zoom app
+            self.d.press("home")
+            time.sleep(2)
+            self.d.app_stop("us.zoom.videomeetings")
 

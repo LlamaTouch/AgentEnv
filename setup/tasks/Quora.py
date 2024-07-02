@@ -19,21 +19,21 @@ class QuoraTask01(BaseTaskSetup):
         try:
             self.d.xpath('//android.widget.RelativeLayout[@resource-id="com.quora.android:id/badge_wrapper"])[2]').click()
             time.sleep(2)
-            text_view = self.d.xpath('//android.widget.TextView[@text="Spaces you might like"]').wait()
+            text_view = self.d.xpath('//android.widget.TextView[@text="Spaces you might like"]')
             
-            if text_view.exists:
+            if text_view.wait():
                 # Navigate to the first recommended space
                 view = text_view.child('//android.view.View[1]')
                 
                 # Check if the space exists
-                if view.exists:
+                if view.exists():
                     # Enter the first recommended space
                     view.click()
                     time.sleep(5)
                     
                     # Follow the space
-                    follow_btn = self.d.xpath('//android.widget.Button[@text="Follow"]').wait()
-                    if follow_btn.exists:
+                    follow_btn = self.d.xpath('//android.widget.Button[@text="Follow"]')
+                    if follow_btn.wait():
                         follow_btn.click()
                     else:
                         print("Follow button not found.")
@@ -57,56 +57,56 @@ class QuoraTask02(BaseTaskSetup):
     def __init__(self, device, instruction):
         super().__init__(device, instruction)
     
-def setup(self):
-    # Start the Quora app
-    self.d.app_start("com.quora.android")
-    time.sleep(2)
-    
-    # Navigate to the following page
-    try:
-        # Access the badge wrapper to navigate to the intended section
-        navigation_path = '//android.widget.RelativeLayout[@resource-id="com.quora.android:id/badge_wrapper"])[2]'
-        self.d.xpath(navigation_path).click()
+    def setup(self):
+        # Start the Quora app
+        self.d.app_start("com.quora.android")
         time.sleep(2)
         
-        # Wait for the "Spaces you might like" text view to appear
-        text_view = self.d.xpath('//android.widget.TextView[@text="Spaces you might like"]').wait()
-        if text_view.exists:
-            # Navigate to the first recommended space
-            view = text_view.child('//android.view.View[1]')
-            if view.exists:
-                view.click()
-                time.sleep(5)
-                
-                # Attempt to go to the first post
-                post = self.d.xpath('//android.webkit.WebView[@text="Quora"]/android.view.View/android.view.View[5]').wait()
-                if post.exists:
-                    post.click()
+        # Navigate to the following page
+        try:
+            # Access the badge wrapper to navigate to the intended section
+            navigation_path = '//android.widget.RelativeLayout[@resource-id="com.quora.android:id/badge_wrapper"])[2]'
+            self.d.xpath(navigation_path).click()
+            time.sleep(2)
+            
+            # Wait for the "Spaces you might like" text view to appear
+            text_view = self.d.xpath('//android.widget.TextView[@text="Spaces you might like"]')
+            if text_view.wait():
+                # Navigate to the first recommended space
+                view = text_view.child('//android.view.View[1]')
+                if view.exists():
+                    view.click()
                     time.sleep(5)
                     
-                    # Attempt to click the 'More' button and bookmark the post
-                    if self.d(text="More").exists:
-                        self.d(text="More").click()
-                        time.sleep(2)
-                        if self.d(text="Bookmark").exists:
-                            self.d(text="Bookmark").click()
+                    # Attempt to go to the first post
+                    post = self.d.xpath('//android.webkit.WebView[@text="Quora"]/android.view.View/android.view.View[5]')
+                    if post.wait():
+                        post.click()
+                        time.sleep(5)
+                        
+                        # Attempt to click the 'More' button and bookmark the post
+                        if self.d(text="More").exists():
+                            self.d(text="More").click()
+                            time.sleep(2)
+                            if self.d(text="Bookmark").exists():
+                                self.d(text="Bookmark").click()
+                            else:
+                                print("Bookmark option not found.")
                         else:
-                            print("Bookmark option not found.")
+                            print("More button not found.")
                     else:
-                        print("More button not found.")
+                        print("First post not found.")
                 else:
-                    print("First post not found.")
+                    print("Specified view does not exist.")
             else:
-                print("Specified view does not exist.")
-        else:
-            print("Specified TextView 'Spaces you might like' not found.")
-    except Exception as e:
-        print(f"An error occurred: {str(e)}")
-    finally:
-        # Ensure the app is stopped even if an error occurs
-        self.d.press("home")
-        time.sleep(2)
-        self.d.app_stop("com.quora.android")
+                print("Specified TextView 'Spaces you might like' not found.")
+        except Exception as e:
+            print(f"An error occurred: {str(e)}")
+        finally:
+            # Ensure the app is stopped even if an error occurs
+            self.d.press("home")
+            time.sleep(2)
+            self.d.app_stop("com.quora.android")
 
 class QuoraTask03(BaseTaskSetup):
     '''
@@ -116,55 +116,55 @@ class QuoraTask03(BaseTaskSetup):
     def __init__(self, device, instruction):
         super().__init__(device, instruction)
     
-def setup(self):
-    # Start the Quora app
-    self.d.app_start("com.quora.android")
-    time.sleep(2)
-    
-    # Navigate to the following page
-    try:
-        # Access the badge wrapper to navigate to the intended section
-        navigation_path = '//android.widget.RelativeLayout[@resource-id="com.quora.android:id/badge_wrapper"])[2]'
-        self.d.xpath(navigation_path).click()
+    def setup(self):
+        # Start the Quora app
+        self.d.app_start("com.quora.android")
         time.sleep(2)
         
-        # Wait for the "Spaces you might like" text view to appear
-        text_view = self.d.xpath('//android.widget.TextView[@text="Spaces you might like"]').wait()
-        if text_view.exists:
-            # Navigate to the first recommended space
-            view = text_view.child('//android.view.View[1]')
-            if view.exists:
-                view.click()
-                time.sleep(5)
-                
-                # Attempt to go to the first post
-                post = self.d.xpath('//android.webkit.WebView[@text="Quora"]/android.view.View/android.view.View[5]').wait()
-                if post.exists:
-                    post.click()
+        # Navigate to the following page
+        try:
+            # Access the badge wrapper to navigate to the intended section
+            navigation_path = '//android.widget.RelativeLayout[@resource-id="com.quora.android:id/badge_wrapper"])[2]'
+            self.d.xpath(navigation_path).click()
+            time.sleep(2)
+            
+            # Wait for the "Spaces you might like" text view to appear
+            text_view = self.d.xpath('//android.widget.TextView[@text="Spaces you might like"]')
+            if text_view.wait():
+                # Navigate to the first recommended space
+                view = text_view.child('//android.view.View[1]')
+                if view.exists():
+                    view.click()
                     time.sleep(5)
                     
-                    # Attempt to click the 'More' button and bookmark the post
-                    if self.d(text="More").exists:
-                        self.d(text="More").click()
-                        time.sleep(2)
-                        if self.d(text="Bookmark").exists:
-                            self.d(text="Bookmark").click()
+                    # Attempt to go to the first post
+                    post = self.d.xpath('//android.webkit.WebView[@text="Quora"]/android.view.View/android.view.View[5]')
+                    if post.wait():
+                        post.click()
+                        time.sleep(5)
+                        
+                        # Attempt to click the 'More' button and bookmark the post
+                        if self.d(text="More").exists():
+                            self.d(text="More").click()
+                            time.sleep(2)
+                            if self.d(text="Bookmark").exists():
+                                self.d(text="Bookmark").click()
+                            else:
+                                print("Bookmark option not found.")
                         else:
-                            print("Bookmark option not found.")
+                            print("More button not found.")
                     else:
-                        print("More button not found.")
+                        print("First post not found.")
                 else:
-                    print("First post not found.")
+                    print("Specified view does not exist.")
             else:
-                print("Specified view does not exist.")
-        else:
-            print("Specified TextView 'Spaces you might like' not found.")
-    except Exception as e:
-        print(f"An error occurred: {str(e)}")
-    finally:
-        # Ensure the app is stopped even if an error occurs
-        self.d.press("home")
-        time.sleep(2)
-        self.d.app_stop("com.quora.android")
+                print("Specified TextView 'Spaces you might like' not found.")
+        except Exception as e:
+            print(f"An error occurred: {str(e)}")
+        finally:
+            # Ensure the app is stopped even if an error occurs
+            self.d.press("home")
+            time.sleep(2)
+            self.d.app_stop("com.quora.android")
 
 
