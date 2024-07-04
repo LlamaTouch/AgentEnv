@@ -65,9 +65,9 @@ class SettingsTask02(BaseTaskSetup):
         self.d(text="Wi-Fi").click()
 
         # Get the status of the switch widget
+        # 执行下面的代码的时候，似乎会点击一下开关组件
         switch_element = self.d(resourceId="android:id/switch_widget")
         is_switch_on = switch_element.info.get('checked')
-
         # If the switch is off, click it to turn it on
         if not is_switch_on:
             switch_element.click()
