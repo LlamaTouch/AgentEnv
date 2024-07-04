@@ -13,3 +13,7 @@ class BaseTaskSetup(ABC):
         Use UI Automation method to complete the setup work
         '''
         pass
+
+class SetupFailureException(Exception):
+    def __init__(self, message="Setup failed", *args, **kwargs):
+        super().__init__(message, *args, **kwargs)
