@@ -6,6 +6,8 @@ from setup.tasks.Quora import *
 from setup.tasks.Zoom import *
 from setup.tasks.Trello import *
 from setup.tasks.Coursera import *
+from setup.tasks.Discord import *
+from setup.tasks.Pinterest import * 
 
 _TaskSetUpMap = {
     # settings
@@ -45,6 +47,18 @@ _TaskSetUpMap = {
     # Coursera
     'Download the first video lecture for the \'Algorithms, Part I\' course to watch offline on the Coursera app.' : CourseraTask01,
     'Visit the forums for the \'Algorithms, Part I\' course and go to discussion for Week 1 on Coursera.' : CourseraTask02,
+    # Discord
+    'Send text \'Hello World\' in text channel \'general\' of agentian\'s server on Discord app.' : DiscordTask01,
+    'Create a new private text channel \'Testbed\' in agentian\'s server on Discord app.' : DiscordTask02,
+    'Delete voice channel Lobby in agentian\'s server on Discord app.' : DiscordTask03,
+    'Upload my latest picture as server icon of agentian\'s server on Discord app.' : DiscordTask04,
+    'Join the voice channel \'Gaming\' in agentian\'s server on Discord app.': DiscordTask05,
+    'Turn to sever \'homework\' and turn on \'Allow Direct Messages\' on Discord app.': DiscordTask06,
+    'Go to Settings of server \'Agent Env\' on Discord app.': DiscordTask07,
+    # Pinterest
+    'Open Pinterest and open one of your own board.': PinterestTask01,
+    'Open Pinterest and search "DIY" in your own board list and open it.': PinterestTask02,
+
 
 }
 
