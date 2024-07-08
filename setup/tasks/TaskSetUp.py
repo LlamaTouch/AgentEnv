@@ -29,7 +29,7 @@ _TaskSetUpMap = {
     'Upload the latest photo from my device to a new folder named "Selfie2024" on Google Drive app.' : GoogleDriveTask01,
     'Share the "Testbed" spreadsheet on Google Drive by copy link, make sure anyone with the link can view.' : GoogleDriveTask02,
     # Quora
-    'In page "Following", check latest posts and click the first one on the Quora app.' : QuoraTask01,
+    'In page \'Following\', check latest posts and click the first one on the Quora app.' : QuoraTask01,
     'Upvote all contents I\'ve bookmarked on the Quora app.' : QuoraTask02,
     'Check the log of latest answer I\'ve bookmarked on Quora app.' : QuoraTask03,
     # Zoom
