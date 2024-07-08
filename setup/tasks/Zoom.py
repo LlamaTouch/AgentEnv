@@ -1,4 +1,4 @@
-from setup.tasks.BaseTaskSetup import BaseTaskSetup,SetupFailureException
+from setup.tasks.BaseTaskSetup import BaseTaskSetup,SetupFailureException,SetupFailureException
 import time
 from uiautomator2 import Device
 
@@ -15,7 +15,7 @@ def check_meeting_exist(d: Device, meeting_name: str=None) -> bool:
         if not meetings_button.wait(timeout=5):
             raise SetupFailureException("Meetings button not found on the screen")
         meetings_button.click()
-        time.sleep(2)  
+        time.sleep(5)  
         
         # Search for target meeting
         elements = d.xpath('//android.widget.TextView[@resource-id="us.zoom.videomeetings:id/txtTopic"]').all()
@@ -23,11 +23,11 @@ def check_meeting_exist(d: Device, meeting_name: str=None) -> bool:
             text = element.info.get("text")
             if text == meeting_name:
                 return True
+       
         return False
 
     except Exception as e:
-        print(f"An error occurred: {e}")
-        return False
+        raise SetupFailureException("An error occurred while checking meeting existence.")
 
 def add_scheduled_meeting(d: Device, meeting_name: str = None) -> None:
     """
@@ -68,16 +68,16 @@ def add_scheduled_meeting(d: Device, meeting_name: str = None) -> None:
         if not confirm_button.wait(timeout=10):
             raise SetupFailureException("Confirm button not found")
         confirm_button.click()
-    
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        raise SetupFailureException("Failed to add scheduled meeting")
-    finally:
+
         # Ensure the device returns to the Meetings page or main screen
         d.press("back")
-        time.sleep(2)
+        time.sleep(5)
         if d(text="Meeting details").exists():
             d.press("back")
+    
+    except Exception as e:
+        raise SetupFailureException("Failed to add scheduled meeting")
+
 
 class ZoomTask01(BaseTaskSetup):
     '''
@@ -90,7 +90,7 @@ class ZoomTask01(BaseTaskSetup):
     def setup(self):
         # start app
         self.d.app_start("us.zoom.videomeetings", use_monkey=True)
-        time.sleep(5)
+        time.sleep(10)
         
         # create regular meeting
         if not check_meeting_exist(self.d, "regular meeting"):
@@ -98,7 +98,7 @@ class ZoomTask01(BaseTaskSetup):
 
         # stop app
         self.d.press("home")
-        time.sleep(2)
+        time.sleep(5)
         self.d.app_stop("us.zoom.videomeetings")
 
 class ZoomTask02(BaseTaskSetup):
@@ -112,7 +112,7 @@ class ZoomTask02(BaseTaskSetup):
     def setup(self):
         # start app
         self.d.app_start("us.zoom.videomeetings", use_monkey=True)
-        time.sleep(5)
+        time.sleep(10)
         
         # create regular meeting
         if not check_meeting_exist(self.d, "regular meeting"):
@@ -120,7 +120,7 @@ class ZoomTask02(BaseTaskSetup):
 
         # stop app
         self.d.press("home")
-        time.sleep(2)
+        time.sleep(5)
         self.d.app_stop("us.zoom.videomeetings")
 
 class ZoomTask03(BaseTaskSetup):
@@ -134,7 +134,7 @@ class ZoomTask03(BaseTaskSetup):
     def setup(self):
         # start app
         self.d.app_start("us.zoom.videomeetings", use_monkey=True)
-        time.sleep(5)
+        time.sleep(10)
         
         # create regular meeting
         if not check_meeting_exist(self.d, "Weekly group meeting"):
@@ -142,7 +142,7 @@ class ZoomTask03(BaseTaskSetup):
 
         # stop app
         self.d.press("home")
-        time.sleep(2)
+        time.sleep(5)
         self.d.app_stop("us.zoom.videomeetings")
 
 class ZoomTask04(BaseTaskSetup):
@@ -156,7 +156,7 @@ class ZoomTask04(BaseTaskSetup):
     def setup(self):
         # start app
         self.d.app_start("us.zoom.videomeetings", use_monkey=True)
-        time.sleep(5)
+        time.sleep(10)
         
         # create regular meeting
         if not check_meeting_exist(self.d, "Weekly group meeting"):
@@ -164,7 +164,7 @@ class ZoomTask04(BaseTaskSetup):
 
         # stop app
         self.d.press("home")
-        time.sleep(2)
+        time.sleep(5)
         self.d.app_stop("us.zoom.videomeetings")
 
 class ZoomTask05(BaseTaskSetup):
@@ -179,7 +179,7 @@ class ZoomTask05(BaseTaskSetup):
         try:
             # Start the Zoom app
             self.d.app_start("us.zoom.videomeetings", use_monkey=True)
-            time.sleep(5)
+            time.sleep(10)
             # Navigate to "Team Chat"
             team_chat = self.d(text="Team Chat")
             if not team_chat.wait(timeout=5):
@@ -204,11 +204,13 @@ class ZoomTask05(BaseTaskSetup):
                 raise SetupFailureException("Send button not found")
             send_button.click()
 
-        finally:
             # Stop the Zoom app
             self.d.press("home")
             time.sleep(2)
             self.d.app_stop("us.zoom.videomeetings")
+        
+        except Exception as e:
+            raise SetupFailureException("An error occurred while sending message.")
 
 class ZoomTask06(BaseTaskSetup):
     '''
@@ -222,7 +224,7 @@ class ZoomTask06(BaseTaskSetup):
         try:
             # Start the Zoom app
             self.d.app_start("us.zoom.videomeetings", use_monkey=True)
-            time.sleep(5)
+            time.sleep(10)
 
             # Navigate to "Team Chat"
             team_chat = self.d(text="Team Chat")
@@ -248,9 +250,11 @@ class ZoomTask06(BaseTaskSetup):
                 raise SetupFailureException("Send button not found")
             send_button.click()
 
-        finally:
             # Stop the Zoom app
             self.d.press("home")
-            time.sleep(2)
+            time.sleep(5)
             self.d.app_stop("us.zoom.videomeetings")
+        
+        except Exception as e:
+            raise SetupFailureException("An error occurred while sending message.")
 
