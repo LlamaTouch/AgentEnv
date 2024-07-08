@@ -1,6 +1,54 @@
-from setup.tasks.BaseTaskSetup import BaseTaskSetup
+from setup.tasks.BaseTaskSetup import BaseTaskSetup,SetupFailureException
 import time
 from uiautomator2 import Device
+# Trello app version: 2024.7.3.19946
+
+def is_first_use(d:Device) -> bool:
+    """
+    Determine if it is the first time using the Trello app
+    """
+    if d(text="Create your first Trello board").wait(timeout=5):
+        return True
+    
+    return False
+
+def first_use_setup(d: Device) -> None:
+    """
+    First time using Trello, create the first Trello board following the guide
+    """
+    try:
+        # Click on 'Create your first Trello board'
+        first_board_button = d(text="Create your first Trello board")
+        if not first_board_button.wait(timeout=5):
+            raise SetupFailureException("Button to create first Trello board not found")
+        first_board_button.click()
+
+        # Select 'Basic Board' option
+        basic_board_option = d(text="Basic Board")
+        if not basic_board_option.wait(timeout=5):
+            raise SetupFailureException("Basic Board option not found")
+        basic_board_option.click()
+
+        # Click 'Create board from template'
+        create_from_template = d(text="Create board from template")
+        if not create_from_template.wait(timeout=5):
+            raise SetupFailureException("Create board from template option not found")
+        create_from_template.click()
+
+        # Click the 'Create board' button
+        create_board_button = d(resourceId="com.trello:id/create_board_button")
+        if not create_board_button.wait(timeout=5):
+            raise SetupFailureException("Create board button not found")
+        create_board_button.click()
+
+        # Click 'Close' to finish or cancel the operation
+        close_button = d(description="Close")
+        if not close_button.wait(timeout=5):
+            raise SetupFailureException("Close button not found")
+        close_button.click()
+
+    except Exception as e:
+        raise SetupFailureException(f"An error occurred when fisrt use setup: {e}")
 
 def create_board(d: Device, board_name: str="School") -> None:
     """
@@ -10,33 +58,34 @@ def create_board(d: Device, board_name: str="School") -> None:
     try:
         # Open the "Create board or add card" menu
         open_menu = d(description="Open create board or add card menu")
-        if not open_menu.exists(timeout=5):
-            raise Exception("The menu to create board or add card cannot be opened.")
+        if not open_menu.wait(timeout=5):
+            raise SetupFailureException("The menu to create board or add card cannot be opened.")
         open_menu.click()
 
         # Navigate to add a new board
         add_board_option = d(resourceId="com.trello:id/add_board_text")
-        if not add_board_option.exists(timeout=5):
-            raise Exception("The option to add a new board is not available.")
+        if not add_board_option.wait(timeout=5):
+            raise SetupFailureException("The option to add a new board is not available.")
         add_board_option.click()
 
         # Enter the name of the board
         board_name_field = d(resourceId="com.trello:id/board_name")
-        if not board_name_field.exists(timeout=5):
-            raise Exception("The field to enter the board name does not exist.")
+        if not board_name_field.wait(timeout=5):
+            raise SetupFailureException("The field to enter the board name does not exist.")
         board_name_field.set_text(board_name)
 
         # Click the create board button
         create_board_button = d(resourceId="com.trello:id/create_board_button")
-        if not create_board_button.exists(timeout=5):
-            raise Exception("The button to create the board is not available.")
+        if not create_board_button.wait(timeout=5):
+            raise SetupFailureException("The button to create the board is not available.")
         create_board_button.click()
 
         # Navigate back to the home page
+        time.sleep(2)
         d.press("back")
         
     except Exception as e:
-        print(f"An error occurred while creating the board: {e}")
+        raise SetupFailureException(f"An error occurred while creating the board: {e}")
 
 def check_board_exist(d: Device, board_name: str="School") -> bool:
     """
@@ -44,7 +93,7 @@ def check_board_exist(d: Device, board_name: str="School") -> bool:
     end at home page
     """
     # Check if the board exists
-    exists = d(text=board_name).exists()
+    exists = d(text=board_name).wait(timeout=5)
     return exists
 
 def get_all_listname_in_board(d: Device) -> list:
@@ -105,25 +154,25 @@ def create_list(d: Device, list_name: str="To Do") -> None:
             d.swipe(800, 500, 700, 500, 0.5)  # Swipe left to view more lists
 
         if not found:
-            raise Exception("Add list button not found after maximum swipes.")
+            raise SetupFailureException("Add list button not found after maximum swipes.")
 
         # Click the "Add list" button
         d.xpath('//android.widget.Button[@resource-id="com.trello:id/add_list_button"]').click()
 
         # Enter the name of the list
         list_name_field = d(resourceId="com.trello:id/list_name_edit_text")
-        if not list_name_field.exists(timeout=5):
-            raise Exception("List name input field does not exist.")
+        if not list_name_field.wait(timeout=5):
+            raise SetupFailureException("List name input field does not exist.")
         list_name_field.set_text(list_name)
 
         # Click the "Save" button
         save_button = d(description="Save")
-        if not save_button.exists(timeout=5):
-            raise Exception("The 'Save' button does not exist.")
+        if not save_button.wait(timeout=5):
+            raise SetupFailureException("The 'Save' button does not exist.")
         save_button.click()
         
     except Exception as e:
-        print(f"An error occurred while creating the list: {e}")
+        raise SetupFailureException(f"An error occurred while creating the list: {e}")
 
 def create_card(d: Device,card_name: str="task") -> None:
     """
@@ -133,26 +182,26 @@ def create_card(d: Device,card_name: str="task") -> None:
     try:
         # Check if the "Add card" button exists
         add_card_button = d(description="Add card")
-        if not add_card_button.exists(timeout=5):
-            raise Exception("The 'Add card' button does not exist. please check if a list is created.")
+        if not add_card_button.wait(timeout=5):
+            raise SetupFailureException("The 'Add card' button does not exist. please check if a list is created.")
 
         # Click the "Add card" button
         add_card_button.click()
 
         # Enter the name of the card
         card_name_field = d(resourceId="com.trello:id/card_name_edit_text")
-        if not card_name_field.exists(timeout=5):
-            raise Exception("Card name input field does not exist.")
+        if not card_name_field.wait(timeout=5):
+            raise SetupFailureException("Card name input field does not exist.")
         card_name_field.set_text(card_name)
 
         # Click the "Save" button
         save_button = d(description="Save")
-        if not save_button.exists(timeout=5):
-            raise Exception("The 'Save' button does not exist.")
+        if not save_button.wait(timeout=5):
+            raise SetupFailureException("The 'Save' button does not exist.")
         save_button.click()
         
     except Exception as e:
-        print(f"An error occurred while creating the card: {e}")
+        raise SetupFailureException(f"An error occurred while creating the card: {e}")
 
 class TrelloTask01(BaseTaskSetup):
     '''
@@ -165,7 +214,12 @@ class TrelloTask01(BaseTaskSetup):
     def setup(self):
         # start app
         self.d.app_start("com.trello", use_monkey=True)
-        time.sleep(2)
+        time.sleep(5)
+
+        # check if it is the first time using the app
+        if is_first_use(self.d):
+            first_use_setup(self.d)
+            time.sleep(2)
 
         # make sure there is a "School" board
         if not check_board_exist(self.d, "School"):
@@ -187,7 +241,13 @@ class TrelloTask02(BaseTaskSetup):
     def setup(self):
         # start app
         self.d.app_start("com.trello", use_monkey=True)
-        time.sleep(2)
+        time.sleep(5)
+
+        # check if it is the first time using the app
+        if is_first_use(self.d):
+            first_use_setup(self.d)
+            time.sleep(2)
+
 
         # make sure there is a "School" board
         if not check_board_exist(self.d, "School"):
@@ -216,7 +276,13 @@ class TrelloTask03(BaseTaskSetup):
     def setup(self):
         # start app
         self.d.app_start("com.trello", use_monkey=True)
-        time.sleep(2)
+        time.sleep(5)
+
+        # check if it is the first time using the app
+        if is_first_use(self.d):
+            first_use_setup(self.d)
+            time.sleep(2)
+
 
         # make sure there is a "School" board
         if not check_board_exist(self.d, "School"):
@@ -245,12 +311,17 @@ class TrelloTask04(BaseTaskSetup):
     def setup(self):
         # start app
         self.d.app_start("com.trello", use_monkey=True)
-        time.sleep(2)
+        time.sleep(5)
 
         # make sure there is a "School" board
         if not check_board_exist(self.d, "School"):
             create_board(self.d, "School")
-        
+
+        # check if it is the first time using the app
+        if is_first_use(self.d):
+            first_use_setup(self.d)
+            time.sleep(2)
+
         # go to the board page
         self.d(text="School").click()
 
