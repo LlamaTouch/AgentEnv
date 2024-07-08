@@ -8,6 +8,7 @@ from setup.tasks.Trello import *
 from setup.tasks.Coursera import *
 from setup.tasks.Discord import *
 from setup.tasks.Pinterest import * 
+from setup.tasks.NewsBreak import *
 
 _TaskSetUpMap = {
     # settings
@@ -58,6 +59,8 @@ _TaskSetUpMap = {
     # Pinterest
     'Open Pinterest and open one of your own board.': PinterestTask01,
     'Open Pinterest and search "DIY" in your own board list and open it.': PinterestTask02,
+    # NewsBreak
+    'Open my latest saved news acticle on NewsBreak app and check comments.' : NewsBreakTask01,
 
 
 }
