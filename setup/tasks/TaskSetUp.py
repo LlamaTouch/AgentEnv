@@ -27,7 +27,7 @@ _TaskSetUpMap = {
     'Open Google Tasks and mark "Task2" as complete.' : GoogleTask02,
     'Open Google Tasks and delete the list "Test".' : GoogleTask03,
     # Google Drive
-    'Upload the latest photo from my device to a new folder named "Selfie2024" on Google Drive app.' : GoogleDriveTask01,
+    'Upload the latest photo from my device to a new folder named \'Selfie2024\' on Google Drive app.' : GoogleDriveTask01,
     'Share the "Testbed" spreadsheet on Google Drive by copy link, make sure anyone with the link can view.' : GoogleDriveTask02,
     # Quora
     'In page \'Following\', check latest posts and click the first one on the Quora app.' : QuoraTask01,
