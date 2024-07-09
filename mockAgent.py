@@ -7,15 +7,25 @@ class MockAgent:
        # The action string returned by the Agent must be in the AitW format; 
        # for reference, see docs/AITW_ACTION_FORMAT.md
        self.actions = [
-                "action_type: DUAL_POINT, touch_point: [0.1, 0.9], lift_point: [0.1, 0.9], typed_text:",
-                "action_type: TYPE, touch_point: [-1.0, -1.0], lift_point: [-1.0, -1.0], typed_text: best rated coffee maker",
-                "action_type: DUAL_POINT, touch_point: [0.2, 0.5], lift_point: [0.3, 0.6], typed_text:",
-                "action_type: STATUS_TASK_COMPLETE, touch_point: [-1.0, -1.0], lift_point: [-1.0,-1.0], typed_text:",
-                
-                "action_type: DUAL_POINT, touch_point: [0.1, 0.1], lift_point: [0.1, 0.1], typed_text:",
-                "action_type: TYPE, touch_point: [-1.0, -1.0], lift_point: [-1.0, -1.0], typed_text: best rated coffee maker",
-                "action_type: DUAL_POINT, touch_point: [0.2, 0.5], lift_point: [0.3, 0.6], typed_text:",
-                "action_type: STATUS_TASK_IMPOSSIBLE, touch_point: [-1.0, -1.0], lift_point: [-1.0,-1.0], typed_text:",
+            "action_type: STATUS_TASK_COMPLETE, touch_point: [-1.0, -1.0], lift_point: [-1.0,-1.0], typed_text:",
+            "action_type: STATUS_TASK_COMPLETE, touch_point: [-1.0, -1.0], lift_point: [-1.0,-1.0], typed_text:",
+            "action_type: STATUS_TASK_COMPLETE, touch_point: [-1.0, -1.0], lift_point: [-1.0,-1.0], typed_text:",
+            "action_type: STATUS_TASK_COMPLETE, touch_point: [-1.0, -1.0], lift_point: [-1.0,-1.0], typed_text:",
+            "action_type: STATUS_TASK_COMPLETE, touch_point: [-1.0, -1.0], lift_point: [-1.0,-1.0], typed_text:",
+            "action_type: STATUS_TASK_COMPLETE, touch_point: [-1.0, -1.0], lift_point: [-1.0,-1.0], typed_text:",
+            "action_type: STATUS_TASK_COMPLETE, touch_point: [-1.0, -1.0], lift_point: [-1.0,-1.0], typed_text:",
+            "action_type: STATUS_TASK_COMPLETE, touch_point: [-1.0, -1.0], lift_point: [-1.0,-1.0], typed_text:",
+            "action_type: STATUS_TASK_COMPLETE, touch_point: [-1.0, -1.0], lift_point: [-1.0,-1.0], typed_text:",
+            "action_type: STATUS_TASK_COMPLETE, touch_point: [-1.0, -1.0], lift_point: [-1.0,-1.0], typed_text:",
+            "action_type: DUAL_POINT, touch_point: [0.1, 0.9], lift_point: [0.1, 0.9], typed_text:",
+            "action_type: TYPE, touch_point: [-1.0, -1.0], lift_point: [-1.0, -1.0], typed_text: best rated coffee maker",
+            "action_type: DUAL_POINT, touch_point: [0.2, 0.5], lift_point: [0.3, 0.6], typed_text:",
+            "action_type: STATUS_TASK_COMPLETE, touch_point: [-1.0, -1.0], lift_point: [-1.0,-1.0], typed_text:",
+            
+            "action_type: DUAL_POINT, touch_point: [0.1, 0.1], lift_point: [0.1, 0.1], typed_text:",
+            "action_type: TYPE, touch_point: [-1.0, -1.0], lift_point: [-1.0, -1.0], typed_text: best rated coffee maker",
+            "action_type: DUAL_POINT, touch_point: [0.2, 0.5], lift_point: [0.3, 0.6], typed_text:",
+            "action_type: STATUS_TASK_IMPOSSIBLE, touch_point: [-1.0, -1.0], lift_point: [-1.0,-1.0], typed_text:",
                 ]
         
     def get_action(self, state):

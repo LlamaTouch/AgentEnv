@@ -113,15 +113,15 @@ def get_all_listname_in_board(d: Device) -> list:
                 list_names.append(name)
         
         # Check if the end marker exists
-        if d.xpath('//android.widget.Button[@resource-id="com.trello:id/add_list_button"]').exists():
+        if d.xpath('//android.widget.Button[@resource-id="com.trello:id/add_list_button"]').wait(timeout=2):
             break
 
         # Swipe left to view more lists, making smaller movements
-        d.swipe(800, 500, 700, 500, 0.5) 
+        d.swipe(800, 500, 600, 500, 0.1) 
         time.sleep(2)  
 
         # In case no new lists are found in the current swipe, and end marker is not visible, stop to avoid infinite loop
-        if not lists.exists():
+        if not lists.wait(timeout=2):
             break
 
     return list_names
@@ -147,17 +147,20 @@ def create_list(d: Device, list_name: str="To Do") -> None:
         max_steps = 30  # Maximum number of swipes
         found = False
         for _ in range(max_steps):
-            if d.xpath('//android.widget.Button[@resource-id="com.trello:id/add_list_button"]').exists():
+            if d.xpath('//android.widget.Button[@resource-id="com.trello:id/add_list_button"]').wait(timeout=2):
                 print("Add list button found")
                 found = True
                 break
-            d.swipe(800, 500, 700, 500, 0.5)  # Swipe left to view more lists
+            d.swipe(800, 500, 600, 500, 0.1)  # Swipe left to view more lists
 
         if not found:
             raise SetupFailureException("Add list button not found after maximum swipes.")
 
         # Click the "Add list" button
-        d.xpath('//android.widget.Button[@resource-id="com.trello:id/add_list_button"]').click()
+        add_list_button = d.xpath('//android.widget.Button[@resource-id="com.trello:id/add_list_button"]')
+        if not add_list_button.wait(timeout=5):
+            raise SetupFailureException("The 'Add list' button does not exist.")
+        add_list_button.click()
 
         # Enter the name of the list
         list_name_field = d(resourceId="com.trello:id/list_name_edit_text")
@@ -184,8 +187,6 @@ def create_card(d: Device,card_name: str="task") -> None:
         add_card_button = d(description="Add card")
         if not add_card_button.wait(timeout=5):
             raise SetupFailureException("The 'Add card' button does not exist. please check if a list is created.")
-
-        # Click the "Add card" button
         add_card_button.click()
 
         # Enter the name of the card
@@ -199,6 +200,7 @@ def create_card(d: Device,card_name: str="task") -> None:
         if not save_button.wait(timeout=5):
             raise SetupFailureException("The 'Save' button does not exist.")
         save_button.click()
+        time.sleep(1)
         
     except Exception as e:
         raise SetupFailureException(f"An error occurred while creating the card: {e}")
@@ -233,7 +235,7 @@ class TrelloTask01(BaseTaskSetup):
 class TrelloTask02(BaseTaskSetup):
     '''
     instruction: Open the Trello app, add a new card titled "Task 1" to the "To Do" list in the "School" board.
-    setup: Make sure there is a board named "School" and a list named "To Do" in the board.
+    setup: Make sure there is a board named "School" and a list named "To Do" in the board and a card in the list.
     '''
     def __init__(self, device, instruction):
         super().__init__(device, instruction)
@@ -255,10 +257,13 @@ class TrelloTask02(BaseTaskSetup):
         
         # go to the board page
         self.d(text="School").click()
+        time.sleep(2)
 
         # make sure there is a "To Do" list in the "School" board
         if not check_list_exist(self.d, "To Do"):
             create_list(self.d, "To Do")
+        
+        create_card(self.d,"Task 1")
         
         # stop app
         self.d.press("home")
@@ -325,10 +330,10 @@ class TrelloTask04(BaseTaskSetup):
         # go to the board page
         self.d(text="School").click()
 
-        # create a "To Do" list in the "School" board
+        # create a "test" list in the "School" board
         create_list(self.d, "test")
 
-        # create a card in the "To Do" list
+        # create a card in the "test" list
         create_card(self.d,"task")
         
         # stop app
