@@ -3,6 +3,18 @@ import time
 from uiautomator2 import Device
 from .GoogleDrive import get_screenshot
 # Discord app version: 235.28 - Stable
+# test on 236.20 - Stable
+
+def check_popup(d: Device, popup_text: str="Check it out") -> bool:
+    """
+    Check if a popup with the specified text is present on the screen. If the popup is found, press check button and press back.
+    """
+    popup = d(text=popup_text)
+    if popup.wait(timeout=5):
+        popup.click()
+        time.sleep(2) 
+        d.press("back")
+        time.sleep(2)
 
 def check_server_exist(d: Device, server_name: str="agentian's server") -> bool:
     """
@@ -10,11 +22,12 @@ def check_server_exist(d: Device, server_name: str="agentian's server") -> bool:
     """
     try:
         # Navigate to the Home page
-        home_button = d(description="Home")
+        home_button = d(text="Home")
         if not home_button.wait(timeout=5):
             raise SetupFailureException("Home button not found.")
         home_button.click()
         
+        time.sleep(2)
         # Navigate to the server list
         server_list = []
         # Find all the server nodes
@@ -23,7 +36,7 @@ def check_server_exist(d: Device, server_name: str="agentian's server") -> bool:
             raise SetupFailureException("Server list not found.")
         for server_button in server_btns:
             if server_button:
-                server_name_desc = server_button.info.get("contentDescription")
+                server_name_desc = server_button.info.get("contentDescription").strip()
                 server_list.append(server_name_desc)
 
         # Check if the specified server name exists in the list
@@ -32,15 +45,15 @@ def check_server_exist(d: Device, server_name: str="agentian's server") -> bool:
         return False
 
     except Exception as e:
-        raise SetupFailureException("An error occurred while checking server existence.")
+        raise SetupFailureException(f"An error occurred while checking server existence.:{e}")
 
-def create_server(d: Device, server_name: str="agentian`s server") -> None:
+def create_server(d: Device, server_name: str="agentian's server") -> None:
     """
     start from the home page of discord app
     """
     try:
         # Navigate to the Home page
-        home_button = d(description="Home")
+        home_button = d(text="Home")
         if not home_button.wait(timeout=5):
             raise SetupFailureException("Home button not found.")
         home_button.click()
@@ -83,19 +96,15 @@ def create_server(d: Device, server_name: str="agentian`s server") -> None:
         skip_button.click()
 
     except Exception as e:
-        raise SetupFailureException("An error occurred while creating server.")
+        raise SetupFailureException(f"An error occurred while creating server.:{e}")
     
 def is_home_page(d: Device) -> bool:
     try:
         # Check if the home button exists
-        home_button = d(description="Home")
-        if not home_button.wait(timeout=5):
-            return False
-        
-        return True
-
+        home_button = d(text="Home")
+        return home_button.wait(timeout=5)
     except Exception as e:
-        raise SetupFailureException("An error occurred while checking if the home page.")
+        raise SetupFailureException(f"An error occurred while checking if the home page.:{e}")
 
 def check_voice_channel_exist(d: Device, channel_name: str="lobby") -> bool:    
     """
@@ -144,7 +153,7 @@ def create_voice_channel(d: Device, server_name: str="agentian`s server",channel
         create_button.click()
 
     except Exception as e:
-        raise SetupFailureException("An error occurred while creating voice channel.")
+        raise SetupFailureException(f"An error occurred while creating voice channel.{e}")
 
 
 class DiscordTask01(BaseTaskSetup):
@@ -159,6 +168,9 @@ class DiscordTask01(BaseTaskSetup):
         # start app
         self.d.app_start("com.discord", use_monkey=True)
         time.sleep(5)
+
+        # check popup
+        check_popup(self.d)
         
         # if not in home page, go back to home page
         if not is_home_page(self.d):
@@ -186,7 +198,10 @@ class DiscordTask02(BaseTaskSetup):
         # start app
         self.d.app_start("com.discord", use_monkey=True)
         time.sleep(5)
-        
+
+        # check popup
+        check_popup(self.d) 
+
         # if not in home page, go back to home page
         if not is_home_page(self.d):
             self.d.press("back")
@@ -214,6 +229,9 @@ class DiscordTask03(BaseTaskSetup):
         self.d.app_start("com.discord", use_monkey=True)
         time.sleep(5)
         
+        # check popup
+        check_popup(self.d)
+
         # if not in home page, go back to home page
         if not is_home_page(self.d):
             self.d.press("back")
@@ -224,7 +242,19 @@ class DiscordTask03(BaseTaskSetup):
             create_server(self.d, "agentian's server")
 
         # go to the agentian's server 
-        self.d(description="agentian's server").click()
+        # a little wired, the server name is 'agentian's server' but the content description is '  agentian`s server'
+        server = self.d(description="  agentian's server" , className="android.widget.Button")
+        if not server.wait(timeout=5):
+            raise SetupFailureException("agentian's server not found")
+        server.click()
+        # necceary to wait for the server page to load
+        time.sleep(2)
+
+        # if already in the agentian's server, go back to the home page
+        if not is_home_page(self.d):
+            self.d.press("back")
+            time.sleep(2)
+
         # check if the 'lobby' voice channel exists,if not create one
         if not check_voice_channel_exist(self.d, "lobby"):
             create_voice_channel(self.d, "agentian's server", "lobby")
@@ -247,6 +277,9 @@ class DiscordTask04(BaseTaskSetup):
         self.d.app_start("com.discord", use_monkey=True)
         time.sleep(5)                
         
+        # check popup
+        check_popup(self.d)
+
         # when there is a server, Discord app will directly go to the server page
         # if not in home page, go back to home page
         if not is_home_page(self.d):
@@ -277,7 +310,10 @@ class DiscordTask05(BaseTaskSetup):
         # start app
         self.d.app_start("com.discord", use_monkey=True)
         time.sleep(5)
-        
+
+        # check popup
+        check_popup(self.d)
+
         # if not in home page, go back to home page
         if not is_home_page(self.d):
             self.d.press("back")
@@ -304,7 +340,10 @@ class DiscordTask06(BaseTaskSetup):
         # start app
         self.d.app_start("com.discord", use_monkey=True)
         time.sleep(5)
-         
+
+        # check popup
+        check_popup(self.d)
+
         # if not in home page, go back to home page
         if not is_home_page(self.d):
             self.d.press("back")
@@ -331,7 +370,10 @@ class DiscordTask07(BaseTaskSetup):
         # start app
         self.d.app_start("com.discord", use_monkey=True)
         time.sleep(5)
-    
+
+        # check popup
+        check_popup(self.d)
+
         # if not in home page, go back to home page
         if not is_home_page(self.d):
             self.d.press("back")
