@@ -27,13 +27,14 @@ def check_server_exist(d: Device, server_name: str="agentian's server") -> bool:
             raise SetupFailureException("Home button not found.")
         home_button.click()
         
-        time.sleep(2)
+        time.sleep(5)
         # Navigate to the server list
         server_list = []
         # Find all the server nodes
         server_btns = d.xpath('//android.widget.AbsListView[@content-desc="Servers"]/android.view.ViewGroup/android.view.ViewGroup/android.widget.Button').all()
         if not server_btns:
-            raise SetupFailureException("Server list not found.")
+            print(f"Server list not found.")
+            return []
         for server_button in server_btns:
             if server_button:
                 server_name_desc = server_button.info.get("contentDescription").strip()

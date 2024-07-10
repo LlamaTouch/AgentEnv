@@ -235,7 +235,7 @@ class TrelloTask01(BaseTaskSetup):
 class TrelloTask02(BaseTaskSetup):
     '''
     instruction: Open the Trello app, add a new card titled "Task 1" to the "To Do" list in the "School" board.
-    setup: Make sure there is a board named "School" and a list named "To Do" in the board and a card in the list.
+    setup: Make sure there is a board named "School" and a list named "To Do" in the board.
     '''
     def __init__(self, device, instruction):
         super().__init__(device, instruction)
@@ -262,9 +262,7 @@ class TrelloTask02(BaseTaskSetup):
         # make sure there is a "To Do" list in the "School" board
         if not check_list_exist(self.d, "To Do"):
             create_list(self.d, "To Do")
-        
-        create_card(self.d,"Task 1")
-        
+           
         # stop app
         self.d.press("home")
         time.sleep(2)
@@ -295,6 +293,7 @@ class TrelloTask03(BaseTaskSetup):
         
         # go to the board page
         self.d(text="School").click()
+        time.sleep(2)
 
         # make sure there is a "To Do" list in the "School" board
         if not check_list_exist(self.d, "To Do"):
@@ -329,6 +328,7 @@ class TrelloTask04(BaseTaskSetup):
 
         # go to the board page
         self.d(text="School").click()
+        time.sleep(2)
 
         # create a "test" list in the "School" board
         create_list(self.d, "test")

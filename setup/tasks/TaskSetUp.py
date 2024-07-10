@@ -9,6 +9,7 @@ from setup.tasks.Coursera import *
 from setup.tasks.Discord import *
 from setup.tasks.Pinterest import * 
 from setup.tasks.NewsBreak import *
+from setup.tasks.DoorDash import *
 
 _TaskSetUpMap = {
     # settings
@@ -61,6 +62,10 @@ _TaskSetUpMap = {
     'Open Pinterest and search "DIY" in your own board list and open it.': PinterestTask02,
     # NewsBreak
     'Open my latest saved news acticle on NewsBreak app and check comments.' : NewsBreakTask01,
+    # DoorDash
+    'Clear my cart on DoorDash app.': DoorDashTask01,   
+    'DoorDash, turn to the first one of saved stores, and add the most liked item to my cart.': DoorDashTask02,
+    'DoorDash, turn to the first one of saved stores, start a group order and copy its link.': DoorDashTask03,
 
 
 }
