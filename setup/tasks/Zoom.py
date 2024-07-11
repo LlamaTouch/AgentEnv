@@ -27,7 +27,7 @@ def check_meeting_exist(d: Device, meeting_name: str=None) -> bool:
         return False
 
     except Exception as e:
-        raise SetupFailureException("An error occurred while checking meeting existence.")
+        raise SetupFailureException(f"An error occurred while checking meeting existence.:{e}")
 
 def add_scheduled_meeting(d: Device, meeting_name: str = None) -> None:
     """
@@ -76,7 +76,7 @@ def add_scheduled_meeting(d: Device, meeting_name: str = None) -> None:
             d.press("back")
     
     except Exception as e:
-        raise SetupFailureException("Failed to add scheduled meeting")
+        raise SetupFailureException(f"Failed to add scheduled meeting:{e}")
 
 
 class ZoomTask01(BaseTaskSetup):
@@ -210,7 +210,7 @@ class ZoomTask05(BaseTaskSetup):
             self.d.app_stop("us.zoom.videomeetings")
         
         except Exception as e:
-            raise SetupFailureException("An error occurred while sending message.")
+            raise SetupFailureException(f"An error occurred while sending message.:{e}")
 
 class ZoomTask06(BaseTaskSetup):
     '''
@@ -256,5 +256,5 @@ class ZoomTask06(BaseTaskSetup):
             self.d.app_stop("us.zoom.videomeetings")
         
         except Exception as e:
-            raise SetupFailureException("An error occurred while sending message.")
+            raise SetupFailureException(f"An error occurred while sending message.:{e}")
 

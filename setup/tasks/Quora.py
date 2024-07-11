@@ -33,8 +33,7 @@ def follow_recommended_space(d: Device):
         follow_btn.click()
     
     except Exception as e:
-        print(f"An error occurred: {str(e)}")
-        raise SetupFailureException("An error occurred while follow recommended sapce.") 
+        raise SetupFailureException(f"An error occurred while follow recommended sapce.:{e}") 
 
 def bookmark_post(d: Device):
     '''
@@ -81,8 +80,7 @@ def bookmark_post(d: Device):
             raise SetupFailureException("Bookmark option not found.")
         bookmark_button.click()
     except Exception as e:
-        print(f"An error occurred: {str(e)}")
-        raise SetupFailureException("An error occurred while bookmark first post.")
+        raise SetupFailureException(f"An error occurred while bookmark first post.:{e}")
     
 class QuoraTask01(BaseTaskSetup):
     '''
