@@ -1,6 +1,7 @@
-from setup.tasks.BaseTaskSetup import BaseTaskSetup, SetupFailureException
+
 import time
 from uiautomator2 import Device
+from setup.tasks.BaseTaskSetup import BaseTaskSetup, SetupFailureException
 # Pinterest app version: 12.14.0
 
 

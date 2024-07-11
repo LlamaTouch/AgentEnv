@@ -1,6 +1,6 @@
-from setup.tasks.BaseTaskSetup import BaseTaskSetup,SetupFailureException
 import time
 from uiautomator2 import Device
+from setup.tasks.BaseTaskSetup import BaseTaskSetup,SetupFailureException
 # Trello app version: 2024.7.3.19946
 
 def is_first_use(d:Device) -> bool:

@@ -1,5 +1,5 @@
-from setup.tasks.BaseTaskSetup import BaseTaskSetup, SetupFailureException
 import time
+from setup.tasks.BaseTaskSetup import BaseTaskSetup, SetupFailureException
 
 '''
 This file contains the settings Apps`s tasks setup

@@ -1,7 +1,7 @@
-from setup.tasks.BaseTaskSetup import BaseTaskSetup, SetupFailureException
 import time
 from uiautomator2 import Device
-from .GoogleDrive import get_screenshot
+from setup.tasks.BaseTaskSetup import BaseTaskSetup, SetupFailureException
+from setup.tasks.GoogleDrive import get_screenshot
 # Discord app version: 235.28 - Stable
 # test on 236.20 - Stable
 

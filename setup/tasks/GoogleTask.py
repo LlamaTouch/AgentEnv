@@ -1,6 +1,6 @@
-from setup.tasks.BaseTaskSetup import BaseTaskSetup, SetupFailureException
 import time
 from uiautomator2 import Device
+from setup.tasks.BaseTaskSetup import BaseTaskSetup, SetupFailureException
 # Google Tasks app version: 2024.06.10.644692922.1-release
 
 def check_task_exist(d: Device, task_name: str="Task2") -> bool:
