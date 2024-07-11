@@ -1,6 +1,25 @@
 episode	category	path	description	nsteps	app	login_category
-10059323239052632892	googleapps	googleapps/trace_1	turn notification dots off	4	Settings	free of logins
-16990707691550773437	googleapps	googleapps/trace_11	turn off wifi	6	Settings	free of login
-17264685466393245607	googleapps	googleapps/trace_13	Set the phone to "Do not disturb".	3	Settings	free of login
-
-
+85137864671311103978	generated	generated/trace_110	Clear my cart on DoorDash app.	5	DoorDash	manually_login
+74679201803490270546	generated	generated/trace_127	Open my latest saved news acticle on NewsBreak app and check comments.	6	NewsBreak	script_login
+65169954120217368904	generated	generated/trace_144	In page 'Following', check latest posts and click the first one on the Quora app.	4	Quora	manually_login
+92328922937169636540	generated	generated/trace_148	Upvote all contents I've bookmarked on the Quora app.	7	Quora	manually_login
+05931997227422511157	generated	generated/trace_151	Check the log of latest answer I've bookmarked on Quora app.	6	Quora	manually_login
+82296106606441936875	generated	generated/trace_1074	Open Pinterest and open one of your own board.	5	Pinterest	script_login
+43565282659590799973	generated	generated/trace_1079	"Open Pinterest and search ""DIY"" in your own board list and open it."	7	Pinterest	script_login
+86130815484414053348	generated	generated/trace_1083	"Open the Trello app and add a new list titled ""To Do"" to the ""School"" board."	7	Trello	manually_login
+99543012544878573169	generated	generated/trace_1084	"Open the Trello app, add a new card titled ""Task 1"" to the ""To Do"" list in the ""School"" board."	7	Trello	manually_login
+56910904243002218769	generated	generated/trace_1085	"Open the Trello app and archive a list named ""To Do"" in the ""School"" board."	6	Trello	manually_login
+51977021183081727575	generated	generated/trace_1087	"Open the Trello app and set a due date for a card in the ""School"" board."	7	Trello	manually_login
+69398024748593486712	generated	generated/trace_167	On Zoom, start my scheduled meeting 'regular meeting' right now.	4	Zoom	manually_login
+73536682412030666293	generated	generated/trace_169	On Zoom, delete my scheduled meeting 'regular meeting'.	5	Zoom	manually_login
+00496106429738482561	generated	generated/trace_171	On Zoom, edit my scheduled meeting 'Weekly group meeting', set 'Repeat' to 'Every week'.	7	Zoom	manually_login
+53197156936832371126	generated	generated/trace_172	On Zoom, edit my scheduled meeting 'Weekly group meeting', turn 'Enable waiting room' on.	6	Zoom	manually_login
+33980584128538052215	generated	generated/trace_173	On Zoom, turn to page 'Team chat', bookmark my latest message to myself.	7	Zoom	manually_login
+28958952251368349529	generated	generated/trace_174	On Zoom, turn to page 'Team chat', set a reminder for my latest message to myself in 1 hour.	8	Zoom	manually_login
+18449902094956675650	generated	generated/trace_193	DoorDash, turn to the first one of saved stores, and add the most liked item to my cart.	4	DoorDash	manually_login
+24140452784357615632	generated	generated/trace_194	DoorDash, turn to the first one of saved stores, start a group order and copy its link.	6	DoorDash	manually_login
+05153160033054959105	generated	generated/trace_211	Turn to sever 'homework' and turn on 'Allow Direct Messages' on Discord app.	5	Discord	manually_login
+98078960122426488057	generated	generated/trace_213	Go to Settings of server 'Agent Env' on Discord app.	5	Discord	manually_login
+19526741649842416022	generated	generated/trace_1139	"Open Google Tasks and star ""Task2""."	4	Google Tasks	script_login
+51269297522683213516	generated	generated/trace_1140	"Open Google Tasks and mark ""Task2"" as complete."	4	Google Tasks	script_login
+50827638723968537952	generated	generated/trace_1141	"Open Google Tasks and delete the list ""Test""."	5	Google Tasks	script_login
