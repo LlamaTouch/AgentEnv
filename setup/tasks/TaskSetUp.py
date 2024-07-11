@@ -66,8 +66,6 @@ _TaskSetUpMap = {
     'Clear my cart on DoorDash app.': DoorDashTask01,   
     'DoorDash, turn to the first one of saved stores, and add the most liked item to my cart.': DoorDashTask02,
     'DoorDash, turn to the first one of saved stores, start a group order and copy its link.': DoorDashTask03,
-
-
 }
 
 def TaskSetUp(device, instruction):

@@ -1,6 +1,6 @@
-from setup.tasks.BaseTaskSetup import BaseTaskSetup,SetupFailureException,SetupFailureException
 import time
 from uiautomator2 import Device
+from setup.tasks.BaseTaskSetup import BaseTaskSetup,SetupFailureException,SetupFailureException
 
 def check_meeting_exist(d: Device, meeting_name: str=None) -> bool:
     """

@@ -1,6 +1,6 @@
-from setup.tasks.BaseTaskSetup import BaseTaskSetup,SetupFailureException
 import time
 from uiautomator2 import Device
+from setup.tasks.BaseTaskSetup import BaseTaskSetup,SetupFailureException
 
 def add_to_cart(d: Device):
     """
@@ -10,15 +10,15 @@ def add_to_cart(d: Device):
     try:
         # go to Home page first
         home = d(resourceId="com.dd.doordash:id/homepage") 
-        if not home.wait(timeout=5):
+        if not home.wait(timeout=20):
             # restart the app and go to Home page
             d.press("home")   
             d.app_stop("com.dd.doordash")
             time.sleep(2)
             d.app_start("com.dd.doordash", use_monkey=True)
-            time.sleep(5)
+            time.sleep(10)
 
-        if not home.wait(timeout=5):
+        if not home.wait(timeout=20):
             raise SetupFailureException("Home page not found")
         home.click()
 
@@ -28,7 +28,7 @@ def add_to_cart(d: Device):
             raise SetupFailureException("Edit text field not found")
         edit_text.click()
 
-        # search for coffee
+        # search for milk
         edit_text2 = d(resourceId="com.dd.doordash:id/edit_text")
         if not edit_text2.wait(timeout=5):
             raise SetupFailureException("Edit text field not found")
@@ -39,9 +39,15 @@ def add_to_cart(d: Device):
         if not milk.wait(timeout=5):
             raise SetupFailureException("milk field not found")
         milk.click()
+	    
+        # go to first result
+        result = d.xpath('//androidx.recyclerview.widget.RecyclerView[@resource-id="com.dd.doordash:id/results_list"]/android.widget.FrameLayout[1]/android.view.ViewGroup')
+        if not result.wait(timeout=5):
+            raise SetupFailureException("milk search result not found")
+        result.click()
 
         # add button
-        add_button = d.xpath('(//android.widget.ImageView[@content-desc="Add"])[1]')
+        add_button = d.xpath('//android.widget.Button[@resource-id="com.dd.doordash:id/button_convenienceproduct_addtocart"]')
         if not add_button.wait(timeout=5):
             raise SetupFailureException("Add button not found")
         add_button.click()
@@ -57,15 +63,15 @@ def save_store(d: Device):
     try:
         # go to Home page first
         home = d(resourceId="com.dd.doordash:id/homepage") 
-        if not home.wait(timeout=5):
+        if not home.wait(timeout=20):
             # restart the app and go to Home page
             d.press("home")   
             d.app_stop("com.dd.doordash")
             time.sleep(2)
             d.app_start("com.dd.doordash", use_monkey=True)
-            time.sleep(5)
+            time.sleep(10)
 
-        if not home.wait(timeout=5):
+        if not home.wait(timeout=20):
             raise SetupFailureException("Home page not found")
         home.click()
 
@@ -114,7 +120,7 @@ class DoorDashTask01(BaseTaskSetup):
     def setup(self):
         # start app
         self.d.app_start("com.dd.doordash", use_monkey=True)
-        time.sleep(5)
+        time.sleep(10)
         
         # add a milk to cart
         add_to_cart(self.d)
@@ -136,7 +142,7 @@ class DoorDashTask02(BaseTaskSetup):
     def setup(self):
         # start app
         self.d.app_start("com.dd.doordash", use_monkey=True)
-        time.sleep(5)
+        time.sleep(10)
         
         # save a store
         save_store(self.d)
@@ -158,7 +164,7 @@ class DoorDashTask03(BaseTaskSetup):
     def setup(self):
         # start app
         self.d.app_start("com.dd.doordash", use_monkey=True)
-        time.sleep(5)
+        time.sleep(10)
 
         # save a store
         save_store(self.d)

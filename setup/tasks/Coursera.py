@@ -1,6 +1,7 @@
-from setup.tasks.BaseTaskSetup import BaseTaskSetup,SetupFailureException
 from uiautomator2 import Device
 import time
+from setup.tasks.BaseTaskSetup import BaseTaskSetup,SetupFailureException
+
 
 def enroll_course(d: Device, course_name: str = "Algorithms, Part I"):
     """

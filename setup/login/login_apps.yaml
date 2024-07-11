@@ -1,4 +1,4 @@
-total_apps: 19
+total_apps: 14
 apps:
   - Google_Tasks
   - YT_Music
@@ -8,16 +8,12 @@ apps:
   - Google_Keep
   - Google_News
   - YouTube
-  # - WEBTOON
   - Pinterest
-  # - Yelp
-  # - Expedia
   - Reddit
   - Coursera
   - Spotify
   - Gmail
   - CBS_Sports
-  # - NewsBreak
-  # - BurgerKing
+
 
 

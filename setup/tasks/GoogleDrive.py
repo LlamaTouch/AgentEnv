@@ -1,6 +1,6 @@
-from setup.tasks.BaseTaskSetup import BaseTaskSetup,SetupFailureException
 import time
 from uiautomator2 import Device
+from setup.tasks.BaseTaskSetup import BaseTaskSetup,SetupFailureException
 # Google Drive app version: 2.21.241.10.80
 
 def get_screenshot(d: Device) -> None:
