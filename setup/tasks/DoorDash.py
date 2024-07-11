@@ -34,8 +34,11 @@ def add_to_cart(d: Device):
             raise SetupFailureException("Edit text field not found")
         edit_text2.set_text("milk")
         
-        d.press("enter")
-        time.sleep(2)
+        # press milk
+        milk = d.xpath('//android.widget.TextView[@resource-id="com.dd.doordash:id/title" and @text="milk"]')
+        if not milk.wait(timeout=5):
+            raise SetupFailureException("milk field not found")
+        milk.click()
 
         # add button
         add_button = d.xpath('(//android.widget.ImageView[@content-desc="Add"])[1]')
@@ -78,8 +81,11 @@ def save_store(d: Device):
             raise SetupFailureException("Edit text field not found")
         edit_text2.set_text("coffee")
         
-        d.press("enter")
-        time.sleep(2)
+        # press coffee
+        coffee = d.xpath('//android.widget.TextView[@resource-id="com.dd.doordash:id/title" and @text="coffee"]')
+        if not coffee.wait(timeout=5):
+            raise SetupFailureException("coffee field not found")
+        coffee.click()
 
         # Click on the seventh instance of FrameLayout
         frame_layout = d.xpath('//androidx.recyclerview.widget.RecyclerView[@resource-id="com.dd.doordash:id/results_list"]/android.widget.FrameLayout[1]')
