@@ -44,5 +44,4 @@ class ClockTask01(BaseTaskSetup):
             time.sleep(2)
             self.d.app_stop("com.android.settings")
         except Exception as e:
-            print(f"Error during setup: {e}")
-            raise SetupFailureException("Unable to configure the environment properly")
+            raise SetupFailureException(f"Unable to configure the environment properly:{e}")

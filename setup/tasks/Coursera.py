@@ -59,8 +59,7 @@ def enroll_course(d: Device, course_name: str = "Algorithms, Part I"):
             print(f"not first course enrollment: {e}")
         
     except SetupFailureException as e:
-        print(f"An error occurred during the enrollment process: {e}")
-        raise SetupFailureException("Unable to enroll in the course.")
+        raise SetupFailureException(f"Unable to enroll in the course.{e}")
     
 def check_course_enrolled(d: Device, course_name: str ="Algorithms, Part I") -> bool:
     '''
@@ -69,7 +68,7 @@ def check_course_enrolled(d: Device, course_name: str ="Algorithms, Part I") -> 
     # Click the "Learn" button
     d(description="Learn").click()
     course = d(text=course_name)
-    if course.exists(timeout=5):
+    if course.wait(timeout=5):
         return True
     
     return False
@@ -85,7 +84,7 @@ class CourseraTask01(BaseTaskSetup):
     def setup(self):
         # start app
         self.d.app_start("org.coursera.android", use_monkey=True)
-        time.sleep(2)
+        time.sleep(5)
 
         # make enrollment to the course 'Algorithms, Part I'
         if not check_course_enrolled(self.d,"Algorithms, Part I"):
@@ -107,7 +106,7 @@ class CourseraTask02(BaseTaskSetup):
     def setup(self):
         # start app
         self.d.app_start("org.coursera.android", use_monkey=True)
-        time.sleep(2)
+        time.sleep(5)
 
         # make enrollment to the course 'Algorithms, Part I'
         if not check_course_enrolled(self.d,"Algorithms, Part I"):

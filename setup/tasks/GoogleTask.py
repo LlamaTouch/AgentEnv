@@ -44,31 +44,30 @@ def create_task(d: Device, task_name: str = "Task2") -> None:
     try:
         # Navigate to "My Tasks"
         my_tasks = d(text="My Tasks")
-        if not my_tasks.exists(timeout=5):
+        if not my_tasks.wait(timeout=5):
             raise SetupFailureException("My Tasks button not found.")
         my_tasks.click()
 
         # Click on "Create new task"
         create_new_task = d(description="Create new task")
-        if not create_new_task.exists(timeout=5):
+        if not create_new_task.wait(timeout=5):
             raise SetupFailureException("Create new task button not found.")
         create_new_task.click()
 
         # Enter the task name
         task_name_field = d(resourceId="com.google.android.apps.tasks:id/add_task_title")
-        if not task_name_field.exists(timeout=5):
+        if not task_name_field.wait(timeout=5):
             raise SetupFailureException("Task name input field not found.")
         task_name_field.set_text(task_name)
 
         # Click the "Done" button to save the task
         done_button = d(resourceId="com.google.android.apps.tasks:id/add_task_done")
-        if not done_button.exists(timeout=5):
+        if not done_button.wait(timeout=5):
             raise SetupFailureException("Done button not found.")
         done_button.click()
 
     except Exception as e:
-        print(f"An error occurred while creating the task: {e}")
-        raise SetupFailureException("Failed to create the task.")
+        raise SetupFailureException(f"Failed to create the task.:{e}")
 
 def check_list_exist(d: Device, list_name: str="Test") -> bool:
     '''
@@ -95,25 +94,24 @@ def create_list(d: Device, list_name: str = "Test") -> None:
     try:
         # Click on "New list"
         new_list_button = d(description="New list")
-        if not new_list_button.exists(timeout=5):
+        if not new_list_button.wait(timeout=5):
             raise SetupFailureException("New list button not found.")
         new_list_button.click()
 
         # Enter the list name
         list_title_field = d(resourceId="com.google.android.apps.tasks:id/edit_list_title")
-        if not list_title_field.exists(timeout=5):
+        if not list_title_field.wait(timeout=5):
             raise SetupFailureException("List title input field not found.")
         list_title_field.set_text(list_name)
 
         # Click the "Done" button to save the new list
         done_button = d(resourceId="com.google.android.apps.tasks:id/done_button")
-        if not done_button.exists(timeout=5):
+        if not done_button.wait(timeout=5):
             raise SetupFailureException("Done button not found.")
         done_button.click()
 
     except Exception as e:
-        print(f"An error occurred while creating the list: {e}")
-        raise SetupFailureException("Failed to create the list.")
+        raise SetupFailureException(f"Failed to create the list.:{e}")
 
 class GoogleTask01(BaseTaskSetup):
     '''

@@ -1,4 +1,4 @@
-from setup.tasks.BaseTaskSetup import BaseTaskSetup
+from setup.tasks.BaseTaskSetup import BaseTaskSetup, SetupFailureException
 import time
 from uiautomator2 import Device
 # Pinterest app version: 12.14.0
@@ -11,48 +11,49 @@ def create_board(d: Device, board_name: str = "DIY") -> None:
     try:
         # Navigate to 'Saved' tab
         saved_tab = d(description="Saved, Tab")
-        if not saved_tab.exists(timeout=5):
-            raise Exception("Saved tab not found")
+        if not saved_tab.wait(timeout=5):
+            raise SetupFailureException("Saved tab not found")
         saved_tab.click()
 
         # Navigate to 'Boards'
         boards_button = d(text="Boards")
-        if not boards_button.exists(timeout=5):
-            raise Exception("Boards button not found")
+        if not boards_button.wait(timeout=5):
+            raise SetupFailureException("Boards button not found")
         boards_button.click()
 
         # Click the button with the specified resource ID '+'
         icon_button = d(resourceId="com.pinterest:id/icon_button")
-        if not icon_button.exists(timeout=5):
-            raise Exception("Icon button not found")
+        if not icon_button.wait(timeout=5):
+            raise SetupFailureException("Icon button not found")
         icon_button.click()
         
         # choose 'Board' after clicking '+'
         board_button = d(text="Board")
-        if not board_button.exists(timeout=5):
-            raise Exception("Board button not found")
+        if not board_button.wait(timeout=5):
+            raise SetupFailureException("Board button not found")
         board_button.click()
 
         # Enter the board name
         board_name_input = d(resourceId="com.pinterest:id/edit_text")
-        if not board_name_input.exists(timeout=5):
-            raise Exception("Board name input not found")
+        if not board_name_input.wait(timeout=5):
+            raise SetupFailureException("Board name input not found")
         board_name_input.set_text(board_name)
 
         # Click the 'Next' button
         create_board_confirm_button = d(text="Next")
-        if not create_board_confirm_button.exists(timeout=5):
-            raise Exception("Create board confirm button not found")
+        if not create_board_confirm_button.wait(timeout=5):
+            raise SetupFailureException("Create board confirm button not found")
         create_board_confirm_button.click()
         
         # Click the 'Done' button
         create_board_confirm_button = d(text="Done")
-        if not create_board_confirm_button.exists(timeout=5):
-            raise Exception("Create board confirm button not found")
+        if not create_board_confirm_button.wait(timeout=5):
+            raise SetupFailureException("Create board confirm button not found")
         create_board_confirm_button.click()
 
     except Exception as e:
-        print(f"An error occurred: {e}")
+        raise SetupFailureException(f"An error occurred when create board: {e}")
+
 
 def check_exist_board(d: Device, board_name: str = "DIY") -> bool:
     """
@@ -61,14 +62,14 @@ def check_exist_board(d: Device, board_name: str = "DIY") -> bool:
     try:
         # Navigate to 'Saved' tab
         saved_tab = d(description="Saved, Tab")
-        if not saved_tab.exists(timeout=5):
-            raise Exception("Saved tab not found")
+        if not saved_tab.wait(timeout=5):
+            raise SetupFailureException("Saved tab not found")
         saved_tab.click()
 
         # Navigate to 'Boards'
         boards_button = d(text="Boards")
-        if not boards_button.exists(timeout=5):
-            raise Exception("Boards button not found")
+        if not boards_button.wait(timeout=5):
+            raise SetupFailureException("Boards button not found")
         boards_button.click()
         
         board_list = []
@@ -86,11 +87,8 @@ def check_exist_board(d: Device, board_name: str = "DIY") -> bool:
         print(f"{board_name} not exists.")
         return False
 
-        
-    
     except Exception as e:
-        print(f"An error occurred: {e}")
-        return False
+        raise SetupFailureException(f"An error occurred when check exist board!:{e}")
 
 
 class PinterestTask01(BaseTaskSetup):
@@ -104,6 +102,7 @@ class PinterestTask01(BaseTaskSetup):
     def setup(self):
         # start app
         self.d.app_start("com.pinterest", use_monkey=True)
+        time.sleep(2)
         
         if not check_exist_board(self.d, "DIY"):
             create_board(self.d, "DIY")
@@ -125,6 +124,7 @@ class PinterestTask02(BaseTaskSetup):
     def setup(self):
         # start app
         self.d.app_start("com.pinterest", use_monkey=True)
+        time.sleep(2)
         
         if not check_exist_board(self.d, "DIY"):
             create_board(self.d, "DIY")

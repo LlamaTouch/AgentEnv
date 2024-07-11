@@ -17,7 +17,7 @@ class SettingsTask01(BaseTaskSetup):
         try:
             # Start the settings app
             self.d.app_start("com.android.settings", use_monkey=True)
-            print("Settings app started.")
+            time.sleep(2)
         
             # Wait and click the element with text "Notifications"
             notifications_element = self.d(text="Notifications")
@@ -46,8 +46,7 @@ class SettingsTask01(BaseTaskSetup):
             self.d.app_stop("com.android.settings")
 
         except Exception as e:
-            print(f"Error during setup: {e}")
-            raise SetupFailureException("Unable to configure the environment properly")
+            raise SetupFailureException(f"Unable to configure the environment properly:{e}")
         
 class SettingsTask02(BaseTaskSetup):
     '''
@@ -65,6 +64,7 @@ class SettingsTask02(BaseTaskSetup):
         try:
             # Start settings app with monkey tool
             self.d.app_start("com.android.settings", use_monkey=True)
+            time.sleep(2)
 
             # Click the element with text "Network & internet"
             if not self.d(text="Network & internet").wait(timeout=5):
@@ -83,7 +83,7 @@ class SettingsTask02(BaseTaskSetup):
 
             # Get the status of the switch widget
             switch_element = self.d(resourceId="android:id/switch_widget")
-            if not switch_element.exists:
+            if not switch_element.wait(timeout=5):
                 raise SetupFailureException("Switch widget not found.")
             is_switch_on = switch_element.info.get('checked')
 
@@ -116,7 +116,7 @@ class SettingsTask03(BaseTaskSetup):
         try:
             # Start the settings app
             self.d.app_start("com.android.settings", use_monkey=True)
-            print("Settings app started.")
+            time.sleep(2)
 
             # Click the element with text "Sound & vibration"
             if not self.d(text="Sound & vibration").wait(timeout=5):
@@ -142,7 +142,6 @@ class SettingsTask03(BaseTaskSetup):
             print(f"Error during setup: {e}")
             raise SetupFailureException("Unable to configure the environment properly")
 
-
 class SettingsTask04(BaseTaskSetup):
     '''
     instruction: turn on improve location accuracy
@@ -158,7 +157,7 @@ class SettingsTask04(BaseTaskSetup):
         try:
             # Start the settings app with monkey tool
             self.d.app_start("com.android.settings", use_monkey=True)
-            print("Settings app started.")
+            time.sleep(2)
 
             # Scroll and click the element with text "Location"
             if not self.d(scrollable=True).scroll.to(text="Location"):
@@ -200,8 +199,7 @@ class SettingsTask04(BaseTaskSetup):
         except Exception as e:
             print(f"Error during setup: {e}")
             raise SetupFailureException("Unable to configure the environment properly")
-            
-        
+             
 class SettingsTask05(BaseTaskSetup):
     '''
     instruction: turn on bluetooth scan
@@ -217,6 +215,7 @@ class SettingsTask05(BaseTaskSetup):
         try:
             # Start the settings app with monkey tool
             self.d.app_start("com.android.settings", use_monkey=True)
+            time.sleep(2)
 
             # Click the element with text "Connected devices"
             if not self.d(text="Connected devices").wait(timeout=5):
@@ -267,7 +266,7 @@ class SettingsTask06(BaseTaskSetup):
         try:
             # Start the settings app with monkey tool
             self.d.app_start("com.android.settings", use_monkey=True)
-
+            time.sleep(2)
             # Click the element with text "Network & internet"
             if not self.d(text="Network & internet").wait(timeout=5):
                 raise SetupFailureException("Network & internet option not found.")
@@ -308,6 +307,7 @@ class SettingsTask07(BaseTaskSetup):
         try:
             # Start the settings app with monkey tool
             self.d.app_start("com.android.settings", use_monkey=True)
+            time.sleep(2)
 
             # Click the element with text "Notifications"
             if not self.d(text="Notifications").wait(timeout=5):
@@ -348,7 +348,8 @@ class SettingsTask08(BaseTaskSetup):
         try:
             # Start the settings app with monkey tool
             self.d.app_start("com.android.settings", use_monkey=True)
-
+            time.sleep(2)
+            
             # Scroll until the "Location" option is visible and click it
             location_ele = self.d(text="Location")
             if not location_ele.wait(timeout=5):

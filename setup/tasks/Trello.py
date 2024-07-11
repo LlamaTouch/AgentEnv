@@ -81,7 +81,7 @@ def create_board(d: Device, board_name: str="School") -> None:
         create_board_button.click()
 
         # Navigate back to the home page
-        time.sleep(2)
+        time.sleep(5)
         d.press("back")
         
     except Exception as e:
@@ -113,7 +113,7 @@ def get_all_listname_in_board(d: Device) -> list:
                 list_names.append(name)
         
         # Check if the end marker exists
-        if d.xpath('//android.widget.Button[@resource-id="com.trello:id/add_list_button"]').wait(timeout=2):
+        if d.xpath('//android.widget.Button[@resource-id="com.trello:id/add_list_button"]').wait(timeout=5):
             break
 
         # Swipe left to view more lists, making smaller movements
@@ -121,7 +121,7 @@ def get_all_listname_in_board(d: Device) -> list:
         time.sleep(2)  
 
         # In case no new lists are found in the current swipe, and end marker is not visible, stop to avoid infinite loop
-        if not lists.wait(timeout=2):
+        if not lists.wait(timeout=5):
             break
 
     return list_names
@@ -133,6 +133,7 @@ def check_list_exist(d: Device, list_name: str="To Do") -> bool:
     func: check if the list exists in a board
     """
     list_names = get_all_listname_in_board(d)
+    print(f"lists: {list_names}")
     if list_name in list_names:
         return True
     return False
@@ -216,7 +217,7 @@ class TrelloTask01(BaseTaskSetup):
     def setup(self):
         # start app
         self.d.app_start("com.trello", use_monkey=True)
-        time.sleep(5)
+        time.sleep(10)
 
         # check if it is the first time using the app
         if is_first_use(self.d):
@@ -243,7 +244,7 @@ class TrelloTask02(BaseTaskSetup):
     def setup(self):
         # start app
         self.d.app_start("com.trello", use_monkey=True)
-        time.sleep(5)
+        time.sleep(10)
 
         # check if it is the first time using the app
         if is_first_use(self.d):
@@ -257,12 +258,12 @@ class TrelloTask02(BaseTaskSetup):
         
         # go to the board page
         self.d(text="School").click()
-        time.sleep(2)
+        time.sleep(5)
 
         # make sure there is a "To Do" list in the "School" board
         if not check_list_exist(self.d, "To Do"):
             create_list(self.d, "To Do")
-           
+        
         # stop app
         self.d.press("home")
         time.sleep(2)
@@ -279,7 +280,7 @@ class TrelloTask03(BaseTaskSetup):
     def setup(self):
         # start app
         self.d.app_start("com.trello", use_monkey=True)
-        time.sleep(5)
+        time.sleep(10)
 
         # check if it is the first time using the app
         if is_first_use(self.d):
@@ -293,7 +294,7 @@ class TrelloTask03(BaseTaskSetup):
         
         # go to the board page
         self.d(text="School").click()
-        time.sleep(2)
+        time.sleep(5)
 
         # make sure there is a "To Do" list in the "School" board
         if not check_list_exist(self.d, "To Do"):
@@ -315,16 +316,16 @@ class TrelloTask04(BaseTaskSetup):
     def setup(self):
         # start app
         self.d.app_start("com.trello", use_monkey=True)
-        time.sleep(5)
-
-        # make sure there is a "School" board
-        if not check_board_exist(self.d, "School"):
-            create_board(self.d, "School")
+        time.sleep(10)
 
         # check if it is the first time using the app
         if is_first_use(self.d):
             first_use_setup(self.d)
             time.sleep(2)
+
+        # make sure there is a "School" board
+        if not check_board_exist(self.d, "School"):
+            create_board(self.d, "School")
 
         # go to the board page
         self.d(text="School").click()
