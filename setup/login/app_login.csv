@@ -1,24 +1,24 @@
 apps,category
 Google Tasks,script_login
-Newsbreak,script_login
 Google News,script_login
 Spotify,script_login
 Coursera,script_login
 Reddit,script_login
-Expedia,script_login
-Yelp,script_login
 Google Keep,script_login
 CBS Sports,script_login
-Burger King,script_login
 Google Drive,script_login
 Gmail,script_login
 YT Music,script_login
 YouTube,script_login
 Google Podcast,script_login
-WEBTOON,script_login
 Google Play Books,script_login
 Pinterest,script_login
 Google Keep Notes,script_login
+Newsbreak,manually_login
+Expedia,manually_login
+Yelp,manually_login
+Burger King,manually_login
+WEBTOON,manually_login
 Crunchyroll,manually_login
 Walmart,manually_login
 X,manually_login

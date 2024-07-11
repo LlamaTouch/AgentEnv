@@ -18,7 +18,4 @@ class BaseApp(ABC):
     def close(self):
         pass
     
-    # @abstractmethod
-    # def logout(self):
-    #     pass
 
