@@ -1,6 +1,4 @@
 episode	category	path	description	nsteps	app	login_category
-10059323239052632892	googleapps	googleapps/trace_1	turn notification dots off	4	Settings	free of logins
-16990707691550773437	googleapps	googleapps/trace_11	turn off wifi	6	Settings	free of login
-17264685466393245607	googleapps	googleapps/trace_13	Set the phone to "Do not disturb".	3	Settings	free of login
-
+1	googleapps	googleapps/trace_13	Open the Trello app, add a new card titled "Task 1" to the "To Do" list in the "School" board.	3	GoogleTask	free of login     
+1	googleapps	googleapps/trace_13	Open the Trello app and archive a list named "To Do" in the "School" board.	3	GoogleTask	free of login   
 
