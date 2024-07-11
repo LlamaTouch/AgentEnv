@@ -10,15 +10,15 @@ def add_to_cart(d: Device):
     try:
         # go to Home page first
         home = d(resourceId="com.dd.doordash:id/homepage") 
-        if not home.wait(timeout=5):
+        if not home.wait(timeout=20):
             # restart the app and go to Home page
             d.press("home")   
             d.app_stop("com.dd.doordash")
             time.sleep(2)
             d.app_start("com.dd.doordash", use_monkey=True)
-            time.sleep(5)
+            time.sleep(10)
 
-        if not home.wait(timeout=5):
+        if not home.wait(timeout=20):
             raise SetupFailureException("Home page not found")
         home.click()
 
@@ -57,15 +57,15 @@ def save_store(d: Device):
     try:
         # go to Home page first
         home = d(resourceId="com.dd.doordash:id/homepage") 
-        if not home.wait(timeout=5):
+        if not home.wait(timeout=20):
             # restart the app and go to Home page
             d.press("home")   
             d.app_stop("com.dd.doordash")
             time.sleep(2)
             d.app_start("com.dd.doordash", use_monkey=True)
-            time.sleep(5)
+            time.sleep(10)
 
-        if not home.wait(timeout=5):
+        if not home.wait(timeout=20):
             raise SetupFailureException("Home page not found")
         home.click()
 
@@ -114,7 +114,7 @@ class DoorDashTask01(BaseTaskSetup):
     def setup(self):
         # start app
         self.d.app_start("com.dd.doordash", use_monkey=True)
-        time.sleep(5)
+        time.sleep(10)
         
         # add a milk to cart
         add_to_cart(self.d)
@@ -136,7 +136,7 @@ class DoorDashTask02(BaseTaskSetup):
     def setup(self):
         # start app
         self.d.app_start("com.dd.doordash", use_monkey=True)
-        time.sleep(5)
+        time.sleep(10)
         
         # save a store
         save_store(self.d)
@@ -158,7 +158,7 @@ class DoorDashTask03(BaseTaskSetup):
     def setup(self):
         # start app
         self.d.app_start("com.dd.doordash", use_monkey=True)
-        time.sleep(5)
+        time.sleep(10)
 
         # save a store
         save_store(self.d)
