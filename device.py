@@ -18,22 +18,9 @@ class Device(object):
         try:
             # 初始化uiautomator2
             self.logger.info("Initializing uiautomator2...")
-            subprocess.check_call(["python", "-m", "uiautomator2", "init"])
-            time.sleep(5)
-
-            # # 设置atx-agent的权限
-            # self.logger.info("Setting permissions for atx-agent...")
-            # self.device.adb.run_cmd(["shell", "chmod", "755", "/data/local/tmp/atx-agent"])
-            
-            # # 启动atx-agent服务
-            # self.logger.info("Starting atx-agent server...")
-            # self.device.adb.run_cmd(["shell", "/data/local/tmp/atx-agent", "server", "-d"])
-            # print("atx-agent activated successfully.")
 
         except subprocess.CalledProcessError as e:
             print("Failed to initialize uiautomator2 with error:", e)
-        # except Exception as e:
-        #     print("An error occurred:", e)
 
     def connect(self) -> None:
         """
@@ -43,15 +30,6 @@ class Device(object):
         time.sleep(5)
         self.u2d = u2.connect(self.serial)
         self.logger.info("Connected to device.")
-        # self.adb.connect()
-        # self.logger.info("ADB connected successfully.")
-        # print("ADB connected successfully.")
-        # self.droidbot_app.set_up()
-        # self.logger.info("DroidBotAppConn set up successfully.")
-        # print("DroidBotAppConn set up successfully.")
-        # self.droidbot_app.connect()
-        # self.logger.info("DroidBotAppConn connected successfully.") 
-        # print("DroidBotAppConn connected successfully.")
 
     def disconnect(self) -> None:
         """
