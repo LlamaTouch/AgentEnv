@@ -28,7 +28,7 @@ def add_to_cart(d: Device):
             raise SetupFailureException("Edit text field not found")
         edit_text.click()
 
-        # search for coffee
+        # search for milk
         edit_text2 = d(resourceId="com.dd.doordash:id/edit_text")
         if not edit_text2.wait(timeout=5):
             raise SetupFailureException("Edit text field not found")
@@ -39,9 +39,15 @@ def add_to_cart(d: Device):
         if not milk.wait(timeout=5):
             raise SetupFailureException("milk field not found")
         milk.click()
+	    
+        # go to first result
+        result = d.xpath('//androidx.recyclerview.widget.RecyclerView[@resource-id="com.dd.doordash:id/results_list"]/android.widget.FrameLayout[1]/android.view.ViewGroup')
+        if not result.wait(timeout=5):
+            raise SetupFailureException("milk search result not found")
+        result.click()
 
         # add button
-        add_button = d.xpath('(//android.widget.ImageView[@content-desc="Add"])[1]')
+        add_button = d.xpath('//android.widget.Button[@resource-id="com.dd.doordash:id/button_convenienceproduct_addtocart"]')
         if not add_button.wait(timeout=5):
             raise SetupFailureException("Add button not found")
         add_button.click()
