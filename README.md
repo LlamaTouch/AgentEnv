@@ -56,4 +56,6 @@ You can directly run the following command to use a MockAgent to experience how 
 ```bash
 python MockAgent2AgentEnv.py
 ```
+## Try AgentEnv with AutoDroid
 
+You can easily reproduce experiments in Llamatouch using the AutoDroid Agent model within the AgentEnv environment by referring to this [repository](https://github.com/LlamaTouch/AutoDroid/blob/main/README_AgentEnv.md).
