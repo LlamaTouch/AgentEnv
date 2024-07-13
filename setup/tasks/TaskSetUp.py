@@ -10,6 +10,8 @@ from setup.tasks.Discord import *
 from setup.tasks.Pinterest import * 
 from setup.tasks.NewsBreak import *
 from setup.tasks.DoorDash import *
+from setup.tasks.X import *
+from setup.tasks.ESPN import *
 
 _TaskSetUpMap = {
     # settings
@@ -66,6 +68,10 @@ _TaskSetUpMap = {
     'Clear my cart on DoorDash app.': DoorDashTask01,   
     'DoorDash, turn to the first one of saved stores, and add the most liked item to my cart.': DoorDashTask02,
     'DoorDash, turn to the first one of saved stores, start a group order and copy its link.': DoorDashTask03,
+    # X
+    'Upload my avatar on X app using my latest picture on device.' : XTask01,
+    # ESPN
+    'Open ESPN, remove nba Lakers from your favourite team.': ESPNTask01,
 }
 
 def TaskSetUp(device, instruction):
