@@ -157,7 +157,7 @@ class ESPNTask01(BaseTaskSetup):
     
     def setup(self):
         # start app
-        self.d.app_start("com.dd.doordash", use_monkey=True)
+        self.d.app_start("com.espn.score_center", use_monkey=True)
         time.sleep(10)
 	    
         # add Lakers to favourite
@@ -166,4 +166,4 @@ class ESPNTask01(BaseTaskSetup):
         # stop app
         self.d.press("home")
         time.sleep(2)
-        self.d.app_stop("com.dd.doordash")
+        self.d.app_stop("com.espn.score_center")
