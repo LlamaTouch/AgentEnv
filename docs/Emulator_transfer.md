@@ -100,7 +100,10 @@ If the `adb devices` command results in `unauthorized`, one of these might work:
 
 1. Reset your ADB server by running the following commands:
 ```bash
-rm ~/.android/adbkey.pub rm ~/.android/adbkey adb kill-server adb devices
+rm ~/.android/adbkey.pub 
+rm ~/.android/adbkey 
+adb kill-server 
+adb devices
 ```
     
 2. Revoke USB debugging authorizations in your device configuration (developer options), then reauthorize USB debugging when prompted.
