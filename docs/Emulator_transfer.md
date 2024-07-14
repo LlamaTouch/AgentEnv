@@ -91,7 +91,7 @@ Note that starting the emulator in this way requires a display device. However, 
 
 To ensure the proper setup of tasks, a correctly configured ADB (Android Debug Bridge) environment is required. It's recommended to set your AVD's USB debugging option to "Always allow from this computer" the first time you run your AVD in a new environment and the USB debug authorization prompt appears. This will save your host's ADB key on the virtual device.
 
-If this option does not save your device, make sure your ADB version is up to date by running:
+If this option does not save your device and authorization prompt keeps prompting, make sure your ADB version is up to date by running:
 ```bash
 sudo apt upgrade adb
 ```
