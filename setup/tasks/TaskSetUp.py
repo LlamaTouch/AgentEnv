@@ -12,6 +12,8 @@ from setup.tasks.NewsBreak import *
 from setup.tasks.DoorDash import *
 from setup.tasks.X import *
 from setup.tasks.ESPN import *
+from setup.tasks.Facebook import *  
+from setup.tasks.Crunchyroll import *
 
 _TaskSetUpMap = {
     # settings
@@ -71,7 +73,11 @@ _TaskSetUpMap = {
     # X
     'Upload my avatar on X app using my latest picture on device.' : XTask01,
     # ESPN
-    'Open ESPN, remove nba Lakers from your favourite team.': ESPNTask01,
+    'Open ESPN, remove nba Lakers from your favourite team.' : ESPNTask01,
+    # Facebook
+    'Update my Facebook profile picture to the a photo I took using the Facebook app.' : FacebookTask01,
+    # Crunchyroll
+    'Find and add the anime series \'Attack on Titan\' to my crunchylist \'weekly list\' on the Crunchyroll app.' : CrunchyrollTask01,
 }
 
 def TaskSetUp(device, instruction):
