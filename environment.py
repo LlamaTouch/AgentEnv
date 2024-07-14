@@ -8,6 +8,7 @@ import pandas as pd
 from utils.parse_action import parse_action_string, parse_action
 from utils.emulator_controller import EmulatorController
 from setup.tasks.TaskSetUp import TaskSetUp
+from utils.transxml2vh import xml_string_to_json
 
 class AgentEnv:
     def __init__(self, avd_name = None, emulator_controller_args=None,\
@@ -101,17 +102,19 @@ class AgentEnv:
         """
         # save view hierarchy, screenshot, top activity name and agent action in local
         
-        screenshot_dir_path, activity_dir_path, vh_dir_path = self._setup_directories(\
-                  self.task_output_path, ['screenshot', 'activity', 'xml'])
+        screenshot_dir_path, activity_dir_path, vh_dir_path, vh_json_dir_path = self._setup_directories(\
+                  self.task_output_path, ['screenshot', 'activity', 'xml', 'vh'])
 
         self.logger.info("getting the agent env state...")
         
         view_hierarchy = self.device.get_viewhierachy()
+        view_hierarchy_json = xml_string_to_json(view_hierarchy)
         activity_name = self.device.get_top_activity_name()
         screenshot = self.device.get_screenshot()
         
         tag = self.current_steps
         view_hierarchy_path = os.path.join(vh_dir_path, f"{tag}.xml")
+        view_hierarchy_json_path = os.path.join(vh_json_dir_path, f"{tag}.vh")
         activity_path = os.path.join(activity_dir_path, f"{tag}.activity")
         screenshot_path = os.path.join(screenshot_dir_path, f"{tag}.png")
 
@@ -132,6 +135,21 @@ class AgentEnv:
             "screenshot_path": screenshot_path, # str
             "view_hierarchy": view_hierarchy, # str
             "view_hierarchy_path": view_hierarchy_path, # str
+            "view_hierarchy_json": view_hierarchy_json, # json
+            "view_hierarchy_json_path": view_hierarchy_json_path # json
+            # view_hierarchy_json example
+            # [
+            # {'bounds': [[0, 0], [0, 0]], 'checkable': False, 'checked': False, 'children': [1, 30, 48], 'class': None, 'clickable': False, 
+            # 'content_description': None, 'editable': False, 'enabled': True, 'focusable': False, 'focused': False, 'is_password': False, 'long_clickable': False, 'package': '', 
+            # 'parent': -1, 'resource_id': None, 'scrollable': False, 'selected': False, 'size': '1080*2400', 'temp_id': 0, 'text': None, 'visible': True, 'child_count': 3}, 
+
+            # {'bounds': [[0, 0], [1080, 2400]], 'checkable': False, 'checked': False, 'children': [2], 'class': 'android.widget.FrameLayout', 'clickable': False, 'content_description': '', 
+            # 'editable': False, 'enabled': True, 'focusable': False, 'focused': False, 'is_password': False, 'long_clickable': False, 'package': 'com.google.android.apps.nexuslauncher', 
+            # 'parent': 0, 'resource_id': '', 'scrollable': False, 'selected': False, 'size': '1080*2400', 'temp_id': 1, 'text': '', 'visible': True, 'child_count': 1}
+
+            # ...
+            # ]
+            # 
         }
 
         self.state_history.append(state)
