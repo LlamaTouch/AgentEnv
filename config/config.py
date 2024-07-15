@@ -29,7 +29,7 @@ class AgentEnvConfig:
     LOCAL_OUTPUT_PATH = "captured_data"
     # INSTRUCTION_FILE_PATH = "docs/instructions/llamatouch_task_metadata.csv"
     INSTRUCTION_FILE_PATH = "docs/instructions/setup_test.tsv"
-    AVD_NAME = "pixel_6a3"
+    AVD_NAME = "pixel_6a_api31"
     MAX_STEPS = 30
     EMULATOR_CONTROLLER_AGRS = {
         "snapshot" : "default_boot",
