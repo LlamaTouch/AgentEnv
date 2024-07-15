@@ -71,7 +71,7 @@ def is_lakers_in_my_nba(d: Device):
     Check if the Lakers are already added to my favorite NBA teams.
     """
 
-    favourite_team_names = d.xpath('//android.widget.TextView[@resource-id="com.espn.score_center:id/team_name')
+    favourite_team_names = d.xpath('//android.widget.TextView[@resource-id="com.espn.score_center:id/team_name]')
 
     if not favourite_team_names.wait(timeout=5):
         return False

@@ -4,7 +4,7 @@ This repository is designed to provide an environment for an agent model to comm
 
 # Dependencies
 ## Emulator Preparation
-1. download the android emulator package from this [Drive Link]().
+1. download the android emulator package from this [OneDrive Link](https://bupteducn-my.sharepoint.com/:u:/g/personal/jxq_bupt_edu_cn/EZxapI07mqNMvy68qFEe-n4BuVhJ75fz9racU94ixW4oog?e=5Jc1Wv).
 2. Follow [Android Emulator Transfer Guide](docs/Emulator_transfer.md) to properly load the Android Emulator.
 
 ## Emvironmnet Setup for LlamaTouch

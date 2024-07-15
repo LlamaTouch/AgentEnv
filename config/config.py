@@ -34,7 +34,7 @@ class AgentEnvConfig:
     EMULATOR_CONTROLLER_AGRS = {
         "snapshot" : "default_boot",
         "port" : "5554",
-        "no-window" : "false",  # Change this to "true" to run the emulator without GUI.
+        "no-window" : "true",  # Change this to "true" to run the emulator without GUI.
     }
 
 class LogConfig:

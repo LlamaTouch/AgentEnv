@@ -87,36 +87,55 @@ emulator -avd pixel_6a_api31 -no-snapshot-load
 ```
 Note that starting the emulator in this way requires a display device. However, some Linux servers are headless, so in these cases, you will need to use a tool that supports the X11 forwarding protocol, like MobaXterm on Windows, to forward the display.
 
-## ADB Setup
 
-To ensure the proper setup of tasks, a correctly configured ADB (Android Debug Bridge) environment is required. It's recommended to set your AVD's USB debugging option to "Always allow from this computer" the first time you run your AVD in a new environment and the USB debug authorization prompt appears. This will save your host's ADB key on the virtual device.
+### 6. close the emulator and save the snapshot:
+After the emulator has started, close it via clicking the x button and save the snapshot.
 
-If this option does not save your device and authorization prompt keeps appearing, make sure your ADB version is up to date by running:
+## ADB Authorization
+
+To ensure the proper setup of tasks, a correctly configured ADB (Android Debug Bridge) Authorization is required. 
+
+### 1. start the AVD with the following command:
+```bash
+emulator -avd pixel_6a_api31
+```
+
+### 2. click the "Always allow from this computer" option and click the 'Allow' when the authorization dialog pops up.
+As shown in the [figure](pics/ADB_Authorization.png)
+
+
+### 3. Verify the connection:
+```bash
+adb devices
+```
+You should see the device listed as `device` not as `unauthorized` .
+
+### 4. close the emulator and save the snapshot:
+Close the AVD via clicking the x button and save the snapshot.
+
+### 5. check the adb authorization:
+Restart the AVD and check the adb authorization agaisn.
+```bash
+emulator -avd pixel_6a_api31
+```
+And then check the adb authorization:
+```bash
+adb devices
+```
+You should see the device listed as `device` not as `unauthorized` and the authorization dialog should not pop up again.This means the adb authorization is saved successfully.
+
+### 6. Troubleshooting
+If this option does not save your device and authorization prompt keeps appearing or the `adb devices` command results in `unauthorized`, try the following:
+
+1. make sure your ADB version is up to date by running:
 ```bash
 sudo apt upgrade adb
 ```
 
-If the `adb devices` command results in `unauthorized`, one of these might work:
-
-1. Reset your ADB server by running the following commands:
+2. Reset your adbkey and restart your adb server by running the following commands:
 ```bash
 rm ~/.android/adbkey.pub 
 rm ~/.android/adbkey 
 adb kill-server 
 adb devices
 ```
-    
-2. Revoke USB debugging authorizations in your device configuration (developer options), then reauthorize USB debugging when prompted.
-
-**(Root Required)** You can also manually save your ADB key by directly importing the host key to the device. For more information, refer to [this Stack Overflow discussion](https://stackoverflow.com/questions/26213954/how-to-solve-adb-device-unauthorized-in-android-adb-host-device).
-
-## Snapshots
-
-While our code does not directly require the emulator's snapshotting feature, if you need it and it doesn't work, try creating the file `~/.android/advancedFeatures.ini` (if it doesn't already exist) and add the following lines to it:
-
-```bash
-Vulkan = off 
-GLDirectMem = on
-```
-
-This configuration may resolve snapshotting issues you encounter. Additionally, we have observed that this configuration may boost the AVD's performance, thereby reducing potential problems.
