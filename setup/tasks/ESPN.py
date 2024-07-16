@@ -9,7 +9,7 @@ def is_nba_in_favourite(d: Device):
     func: check if NBA is in my favourite team
     """
 
-    favourite = d(text="Favorites")
+    favourite = d(text="FAVORITES")
     if not favourite.wait(timeout=5):
         return False
      
@@ -20,7 +20,7 @@ def is_nba_in_favourite(d: Device):
     
     list_view = list_views.all()
     for view in list_view:
-        sport = view.info.get("contentDescription").strip()
+        sport = view.info.get("text").strip()
         if sport == "NBA":
             nba_id = len(sports)
         if sport == "ALL SPORTS":
@@ -50,6 +50,7 @@ def add_nba_to_favourite(d: Device):
         if not favorite_button.wait(timeout=5):
             raise SetupFailureException("Favorite button not found")
         favorite_button.click()
+        time.sleep(5)
 
         # Click back button
         back_button = d(description="back.button")
@@ -71,7 +72,7 @@ def is_lakers_in_my_nba(d: Device):
     Check if the Lakers are already added to my favorite NBA teams.
     """
 
-    favourite_team_names = d.xpath('//android.widget.TextView[@resource-id="com.espn.score_center:id/team_name]')
+    favourite_team_names = d.xpath('//android.widget.TextView[@resource-id="com.espn.score_center:id/team_name"]')
 
     if not favourite_team_names.wait(timeout=5):
         return False
@@ -116,6 +117,7 @@ def add_lakers_to_my_nba(d: Device):
         if not lakers_button.wait(timeout=5):
             raise SetupFailureException("Lakers button not found")
         lakers_button.click()
+        time.sleep(2)
 
         # Click 'Finish and Close'
         finish_and_close_button = d(description="Finish and Close")
