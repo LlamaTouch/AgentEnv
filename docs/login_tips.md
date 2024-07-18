@@ -10,11 +10,11 @@ Overall, we adhere to the following two principles when configuring each app log
 
 | App Name            | Login Method       | Image Link                                                               |
 |:-------------------:|:------------------:|:------------------------------------------------------------------------:|
-| Newsbreak           | Manual Login       | [Newsbreak](pics/Newsbreak.png)                                     |
+| Newsbreak           | Manual Login       | [Newsbreak](pics/NewsBreak.png)                                     |
 | Expedia             | Manual Login       | [Expedia](pics/Expedia.png)                                         |
 | Yelp                | Manual Login       | [Yelp](pics/Yelp.png)                                               |
 | Burger King         | Manual Login       | [Burger King](pics/BurgerKing.png)                                  |
-| WEBTOON             | Manual Login       | [WEBTOON](pics/WEBTOON.png)                                         |
+| WEBTOON             | Manual Login       | [WEBTOON](pics/Webtoon.png)                                         |
 | Crunchyroll         | Manual Login       | [Crunchyroll](pics/Crunchyroll.png)                                 |
 | X                   | Manual Login       | [X](pics/X.png)                                                     |
 | ZOOM                | Manual Login       | [ZOOM](pics/Zoom.png)                                               |
