@@ -15,12 +15,14 @@ This repository is designed to provide an environment for an agent model to comm
 ```
 3. If you can`t access the google play store directly, you maybe need to add a proxy accorrding to [this guide](https://blog.csdn.net/smallbabylong/article/details/132257659)
 4. login apps in the emulator:
-    - use script login part of Apps: 
+    - **script login**: This login script is designed to sign in to apps that only require Google account for authentication.
         ```bash
         python setup/login/login_apps.py --device_serial <device_serial>
         ```
-        This login script is designed to sign in to apps that only require Google account for authentication.
-    - manually login other Apps: For apps that require manual login, please refer to this [table](setup/login/app_login.csv).
+
+    - **Manually login**: Apps that require manual login need users to manually register and log in. For more information, please refer to [login_tips](docs/login_tips.md).
+
+    - **Free of login**: Apps that are free of login do not require registration or account login. However, you need to configure certain permissions within the app.For more information, please refer to [login_tips](docs/login_tips.md).
 
 5. quit the emulator and save to the default snapshot.
 
