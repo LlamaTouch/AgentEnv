@@ -4,6 +4,7 @@ from device import Device
 import time
 import logging
 import pandas as pd
+import json
 
 from utils.parse_action import parse_action_string, parse_action
 from utils.emulator_controller import EmulatorController
@@ -118,10 +119,13 @@ class AgentEnv:
         activity_path = os.path.join(activity_dir_path, f"{tag}.activity")
         screenshot_path = os.path.join(screenshot_dir_path, f"{tag}.png")
 
-        with open(view_hierarchy_path, "w") as vh_file:
+        with open(view_hierarchy_path, "w", encoding="utf-8") as vh_file:
             vh_file.write(view_hierarchy)
+
+        with open(view_hierarchy_json_path, "w", encoding="utf-8") as vh_json_file:
+            json.dump(view_hierarchy_json, vh_json_file, ensure_ascii=False, indent=4)
         
-        with open(activity_path, "w") as activity_file:
+        with open(activity_path, "w", encoding="utf-8") as activity_file:
             activity_file.write(activity_name)
         
         screenshot.save(screenshot_path)
@@ -136,7 +140,7 @@ class AgentEnv:
             "view_hierarchy": view_hierarchy, # str
             "view_hierarchy_path": view_hierarchy_path, # str
             "view_hierarchy_json": view_hierarchy_json, # json
-            "view_hierarchy_json_path": view_hierarchy_json_path # json
+            "view_hierarchy_json_path": view_hierarchy_json_path # str
             # view_hierarchy_json example
             # [
             # {'bounds': [[0, 0], [0, 0]], 'checkable': False, 'checked': False, 'children': [1, 30, 48], 'class': None, 'clickable': False, 
